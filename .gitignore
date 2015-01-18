@@ -9,3 +9,8 @@ cabal-dev
 .cabal-sandbox/
 cabal.sandbox.config
 cabal.config
+
+# IDEA specific
+.idea/
+*.iml
+
