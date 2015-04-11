@@ -23,6 +23,7 @@ spec = do
       it "can be used as an applicative" $ do
         (+3) <$> (Success 1 :: Validation String Int) `shouldBe` Success 4
         (*) <$> (Success 2 :: Validation String Int) <*> Success 3 `shouldBe` Success 6
+        (*) <$> (Failure ["a"] :: Validation String Int) <*> Failure ["b"] `shouldBe` Failure["a", "b"]
       it "obeys the applicative laws" $ do
         -- TODO use quickcheck
         let initialVal = (Success 3 :: Validation String Int)
