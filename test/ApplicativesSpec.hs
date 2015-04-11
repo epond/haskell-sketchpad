@@ -28,3 +28,7 @@ spec = do
         -- TODO use quickcheck
         let initialVal = (Success 3 :: Validation String Int)
         Success (*2) <*> initialVal `shouldBe` fmap (*2) initialVal
+        -- TODO identity law: pure id <*> v = v
+        -- TODO composition law: pure (.) <*> u <*> v <*> w = u <*> (v <*> w)
+        -- TODO homomorphism law: pure f <*> pure x = pure (f x)
+        -- TODO interchange law: u <*> pure y = pure ($ y) <*> u
