@@ -1,5 +1,7 @@
 module CatTheory.Part03 where
 
+import Data.Monoid
+
 newtype MyBool = MyBool { getBool :: Bool }
 
 -- Categories Great and Small
