@@ -7,9 +7,10 @@ The intended use is to look at the source and unit tests.
 Build and run
 -----
 
-`cabal run` will build the module and run it. It may give a message telling you what dependencies need to be installed
-first using `cabal install`.
+`stack build` will build the module.
 
-`cabal test` will run the tests.
+`stack exec haskell-sketchpad` will run it, but it probably won't do much.
 
-`cabal repl` will fire up a repl with the project loaded so you can do things like check types and generally poke around.
+`stack build --test` will run the tests.
+
+`stack ghci` will fire up a repl with the project loaded so you can do things like check types and generally poke around.
