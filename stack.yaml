@@ -6,4 +6,4 @@ extra-deps: []
 # lts-2.22 uses GHC 7.8.4
 resolver: lts-2.22
 # lts-3.4 uses GHC 7.10.2
-#resolver: lts-3.1
+#resolver: lts-3.4

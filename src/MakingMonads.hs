@@ -1,6 +1,8 @@
 module MakingMonads where
 
 import Data.Ratio  
+import Control.Applicative (Applicative(..))
+import Control.Monad       (liftM, ap)
   
 newtype ProbList a = ProbList { getProbList :: [(a,Rational)] } deriving Show
 
@@ -26,3 +28,18 @@ instance Monad (State s) where
     (State h) >>= f = State $ \s -> let (a, newState) = h s  
                                         (State g) = f a  
                                     in  g newState
+
+
+
+-- The following is required to suppress the warnings generated from the Applicative - Monad Proposal:
+
+instance Applicative ProbList where
+    pure  = return
+    (<*>) = ap
+
+instance Functor (State s) where
+    fmap = liftM
+
+instance Applicative (State s) where
+    pure  = return
+    (<*>) = ap
