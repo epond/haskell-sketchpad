@@ -32,4 +32,5 @@ test-suite spec
                    haskell-sketchpad,
                    hspec,
                    mtl,
-                   QuickCheck
+                   QuickCheck,
+                   lens
