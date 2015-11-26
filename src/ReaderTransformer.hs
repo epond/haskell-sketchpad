@@ -14,4 +14,9 @@ getStreetAddress :: Email -> APIKey -> Maybe StreetAddress
 getStreetAddress _ _ = Just "1 Acacia Road"
 
 streetAddressDirectly :: Maybe StreetAddress
-streetAddressDirectly = Nothing -- ???
+streetAddressDirectly = do
+    user <- getUser "Fred" "123ABC"
+    getStreetAddress (email user) "123ABC"
+
+--getUserReader :: UserName -> ReaderT APIKey Maybe User
+--getUserReader username = do
