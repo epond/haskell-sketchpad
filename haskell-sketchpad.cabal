@@ -18,11 +18,14 @@ library
                    Transformers,
                    Writer,
                    ReaderTransformer,
+                   RecursionSchemes,
                    CatTheory.Part03, CatTheory.Part04
   hs-source-dirs:  src
   default-language:Haskell2010
   build-depends:   base,
-                   mtl
+                   mtl,
+                   recursion-schemes,
+                   data-ordlist
 
 test-suite spec
   main-is:         Spec.hs
