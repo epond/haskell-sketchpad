@@ -1,4 +1,4 @@
-module MakingMoadsSpec where
+module MakingMonadsSpec where
 
 import Test.Hspec
 import MakingMonads
