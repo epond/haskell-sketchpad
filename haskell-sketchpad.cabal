@@ -20,7 +20,8 @@ library
                    ReaderTransformer,
                    RecursionSchemes,
                    ExistentialTypes,
-                   CatTheory.Part03, CatTheory.Part04
+                   CatTheory.Part03, CatTheory.Part04,
+                   Algorithms.Mergesort
   hs-source-dirs:  src
   default-language:Haskell2010
   build-depends:   base,
