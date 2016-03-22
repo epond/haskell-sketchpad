@@ -5,10 +5,10 @@ import Algorithms.Mergesort
 
 spec :: Spec
 spec = do
-    describe "Mergesort" $ do
+    describe "MergeSort" $ do
         it "sorts an empty list" $ do
-            mergesort [] `shouldBe` []
+            mergeSort ([] :: [Int]) `shouldBe` []
         it "sorts a list with one element" $ do
-            mergesort [5] `shouldBe` [5]
+            mergeSort ([5] :: [Int]) `shouldBe` [5]
         it "sorts a list with many elements" $ do
-            mergesort [4,19,12,1,9] `shouldBe` [1,4,9,12,19]
+            mergeSort ([4,19,12,1,9] :: [Int]) `shouldBe` [1,4,9,12,19]
