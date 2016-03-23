@@ -20,3 +20,9 @@ compose f g x = hole -- Replace this with a noisy hole to begin hole-driven deve
         _ = f :: b -> c
         _ = g :: a -> b
         _ = x :: a
+
+apply :: Monad m => m (a -> b) -> m a -> m b
+apply = undefined
+
+filterM' :: Monad m => (a -> m Bool) -> [a] -> m [a]
+filterM' = undefined
