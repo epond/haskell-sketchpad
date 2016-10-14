@@ -34,8 +34,26 @@ compose f g x = undefined -- Replace this with a noisy hole to begin hole-driven
         _ = g :: a -> b
         _ = x :: a
 
-apply :: Monad m => m (a -> b) -> m a -> m b
-apply = undefined
+{-  In the next example we can see by the function signature that m is a type constructor
+    which is constrained to the Monad typeclass. We know more about m than if it were unconstrained.
+    We can make use of the methods of the Monad type-constructor class in our implementation.
+-}
+
+apply :: forall m a b. Monad m => m (a -> b) -> m a -> m b
+apply mf ma = mf >>= k
+    where
+        _ = (>>=) :: forall h. m h -> (h -> m b) -> m b
+        _ = (mf >>=) :: ((a -> b) -> m b) -> m b
+        _ = (ma >>=) :: (a -> m b) -> m b
+        _ = mf :: m (a -> b)
+        _ = ma :: m a
+        k f = ma >>= r
+            where
+                _ = f :: a -> b
+                r x = hole
+                    where
+                        _ = x :: a
+
 
 filterM' :: Monad m => (a -> m Bool) -> [a] -> m [a]
 filterM' = undefined
