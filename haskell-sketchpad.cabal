@@ -7,6 +7,7 @@ executable haskell-sketchpad
   main-is:         Sketchpad.hs
   hs-source-dirs:  src
   default-language:Haskell2010
+  other-modules:   Timer
   build-depends:   base,
                    haskell-sketchpad
 
@@ -35,6 +36,16 @@ test-suite spec
   type:            exitcode-stdio-1.0
   hs-source-dirs:  test
   default-language:Haskell2010
+  other-modules:   Algorithms.MergesortSpec,
+                   ApplicativesSpec,
+                   DatatypesSpec,
+                   ExistentialTypesSpec,
+                   LensesSpec,
+                   MakingMonadsSpec,
+                   QuickCheckSpec,
+                   ReaderTransformerSpec,
+                   TransformersSpec,
+                   WriterSpec
   build-depends:   base,
                    haskell-sketchpad,
                    hspec,
