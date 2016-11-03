@@ -12,7 +12,7 @@ executable haskell-sketchpad
                    haskell-sketchpad
 
 library
-  ghc-options:     -Wall
+  ghc-options:     -threaded -rtsopts -with-rtsopts=-N
   exposed-modules: Datatypes,
                    Applicatives,
                    MakingMonads,
