@@ -19,3 +19,7 @@ spec = do
             TisAnInt 5 == TisAnInt 4 `shouldBe` False
             TisAString "abc" == TisAString "abb" `shouldBe` False
             TisAnInt 5 == TisAString "5" `shouldBe` False
+        it "has an Eq instance for Pair" $ do
+            Pair 4 7 == Pair 4 7 `shouldBe` True
+            Pair 4 7 == Pair 4 8 `shouldBe` False
+            Pair 4 7 == Pair 5 7 `shouldBe` False
