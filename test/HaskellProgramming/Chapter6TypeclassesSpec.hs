@@ -28,3 +28,10 @@ spec = do
             Tuple 4 "7" == Tuple 4 "7" `shouldBe` True
             Tuple 4 "7" == Tuple 4 "8" `shouldBe` False
             Tuple 4 "7" == Tuple 5 "7" `shouldBe` False
+        it "has an Eq instance for Which" $ do
+            ThisOne 4 == ThisOne 4 `shouldBe` True
+            ThisOne 4 == ThisOne 5 `shouldBe` False
+            ThatOne 4 == ThatOne 4 `shouldBe` True
+            ThatOne 4 == ThatOne 5 `shouldBe` False
+            ThisOne 4 == ThatOne 4 `shouldBe` False
+            ThatOne 4 == ThisOne 4 `shouldBe` False

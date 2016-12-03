@@ -21,3 +21,10 @@ instance Eq a => Eq (Pair a) where
 data Tuple a b = Tuple a b
 instance (Eq a, Eq b) => Eq (Tuple a b) where
   (==) (Tuple x y) (Tuple x' y') = x == x' && y == y'
+
+data Which a = ThisOne a | ThatOne a
+instance Eq a => Eq (Which a) where
+  (==) (ThisOne x) (ThisOne x') = x == x'
+  (==) (ThatOne x) (ThatOne x') = x == x'
+  (==) (ThisOne _) (ThatOne _) = False
+  (==) (ThatOne _) (ThisOne _) = False
