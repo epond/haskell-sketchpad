@@ -28,3 +28,9 @@ instance Eq a => Eq (Which a) where
   (==) (ThatOne x) (ThatOne x') = x == x'
   (==) (ThisOne _) (ThatOne _) = False
   (==) (ThatOne _) (ThisOne _) = False
+
+data EitherOr a b = Hello a | Goodbye b
+instance (Eq a, Eq b) => Eq (EitherOr a b) where
+  (==) (Hello x) (Hello x') = x == x'
+  (==) (Goodbye x) (Goodbye x') = x == x'
+  (==) _ _ = False

@@ -35,3 +35,9 @@ spec = do
             ThatOne 4 == ThatOne 5 `shouldBe` False
             ThisOne 4 == ThatOne 4 `shouldBe` False
             ThatOne 4 == ThisOne 4 `shouldBe` False
+        it "has an Eq instance for EitherOr" $ do
+            (Hello 4 :: EitherOr Int Int) == (Hello 4 :: EitherOr Int Int) `shouldBe` True
+            (Hello 4 :: EitherOr Int Int) == (Hello 5 :: EitherOr Int Int) `shouldBe` False
+            (Hello 4 :: EitherOr Int Int) == (Goodbye 4 :: EitherOr Int Int) `shouldBe` False
+            (Goodbye 4 :: EitherOr Int Int) == (Goodbye 4 :: EitherOr Int Int) `shouldBe` True
+            (Goodbye 4 :: EitherOr Int Int) == (Goodbye 5 :: EitherOr Int Int) `shouldBe` False
