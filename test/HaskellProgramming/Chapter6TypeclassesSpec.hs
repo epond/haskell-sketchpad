@@ -23,3 +23,8 @@ spec = do
             Pair 4 7 == Pair 4 7 `shouldBe` True
             Pair 4 7 == Pair 4 8 `shouldBe` False
             Pair 4 7 == Pair 5 7 `shouldBe` False
+        it "has an Eq instance for Tuple" $ do
+            Tuple 4 7 == Tuple 4 7 `shouldBe` True
+            Tuple 4 "7" == Tuple 4 "7" `shouldBe` True
+            Tuple 4 "7" == Tuple 4 "8" `shouldBe` False
+            Tuple 4 "7" == Tuple 5 "7" `shouldBe` False
