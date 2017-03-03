@@ -42,3 +42,7 @@ spec = do
             eftChar 'f' 'c' `shouldBe` []
         it "eftChar 'c' 'c'" $ do
             eftChar 'c' 'c' `shouldBe` ['c']
+
+    describe "myWords" $ do
+        it "myWords all i wanna do is have some fun" $ do
+            myWords "all i wanna do is have some fun" `shouldBe` ["all","i","wanna","do","is","have","some","fun"]

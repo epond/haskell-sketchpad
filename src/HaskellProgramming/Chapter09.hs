@@ -23,3 +23,9 @@ eftChar x y
     | x == y    = [x]
     | x < y     = x : eftChar (succ x) y
     | otherwise = []
+
+myWords :: String -> [String]
+myWords "" = []
+myWords (' ' : xs) = myWords xs
+myWords s = takeWhile notspace s : myWords (dropWhile notspace s)
+    where notspace = (/= ' ')
