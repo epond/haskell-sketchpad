@@ -25,13 +25,13 @@ eftChar x y
     | otherwise = []
 
 myWords :: String -> [String]
-myWords "" = []
-myWords (' ' : xs) = myWords xs
-myWords s = takeWhile notspace s : myWords (dropWhile notspace s)
-    where notspace = (/= ' ')
+myWords = myWay ' '
 
 myLines :: String -> [String]
-myLines "" = []
-myLines ('\n' : xs) = myLines xs
-myLines s = takeWhile notnewline s : myLines (dropWhile notnewline s)
-    where notnewline = (/= '\n')
+myLines = myWay '\n'
+
+myWay :: Char -> String -> [String]
+myWay _ "" = []
+myWay c s
+    | c == (head s) = myWay c (tail s)
+    | otherwise = takeWhile (/= c) s : myWay c (dropWhile (/= c) s)
