@@ -29,3 +29,9 @@ myWords "" = []
 myWords (' ' : xs) = myWords xs
 myWords s = takeWhile notspace s : myWords (dropWhile notspace s)
     where notspace = (/= ' ')
+
+myLines :: String -> [String]
+myLines "" = []
+myLines ('\n' : xs) = myLines xs
+myLines s = takeWhile notnewline s : myLines (dropWhile notnewline s)
+    where notnewline = (/= '\n')
