@@ -11,3 +11,15 @@ eftOrd x y
     | x == y    = [x]
     | x < y     = x : eftOrd (succ x) y
     | otherwise = []
+
+eftInt :: Int -> Int -> [Int]
+eftInt x y
+    | x == y    = [x]
+    | x < y     = x : eftInt (succ x) y
+    | otherwise = []
+
+eftChar :: Char -> Char -> [Char]
+eftChar x y
+    | x == y    = [x]
+    | x < y     = x : eftChar (succ x) y
+    | otherwise = []

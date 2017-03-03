@@ -26,3 +26,19 @@ spec = do
             eftOrd LT EQ `shouldBe` [LT, EQ]
         it "eftOrd EQ GT" $ do
             eftOrd EQ GT `shouldBe` [EQ, GT]
+
+    describe "Chapter09 eftInt" $ do
+        it "eftInt 3 9" $ do
+            eftInt 3 9 `shouldBe` [3, 4, 5, 6, 7, 8, 9]
+        it "eftInt 9 3" $ do
+            eftInt 9 3 `shouldBe` []
+        it "eftInt 9 9" $ do
+            eftInt 9 9 `shouldBe` [9]
+
+    describe "Chapter09 eftChar" $ do
+        it "eftChar 'c' 'f'" $ do
+            eftChar 'c' 'f' `shouldBe` ['c', 'd', 'e', 'f']
+        it "eftChar 'f' 'c'" $ do
+            eftChar 'f' 'c' `shouldBe` []
+        it "eftChar 'c' 'c'" $ do
+            eftChar 'c' 'c' `shouldBe` ['c']
