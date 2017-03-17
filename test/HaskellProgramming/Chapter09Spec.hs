@@ -82,6 +82,8 @@ spec = do
         it "has a function that reverses a list" $ do
             myReverse "blah" `shouldBe` "halb"
             myReverse [1..5] `shouldBe` [5, 4, 3, 2, 1]
+        it "has a function to flatten lists" $ do
+            squish [[1, 2], [3, 4], [5, 6]] `shouldBe` [1, 2, 3, 4, 5, 6]
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"

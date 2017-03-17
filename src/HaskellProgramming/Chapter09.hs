@@ -70,3 +70,7 @@ myReverse :: [a] -> [a]
 myReverse _l = doReverse _l []
     where doReverse [] acc = acc
           doReverse (x : xs) acc = doReverse xs (x : acc)
+
+squish :: [[a]] -> [a]
+squish [] = []
+squish (x : xs) = x ++ squish xs
