@@ -58,6 +58,10 @@ spec = do
         it "myZip" $ do
             myZip [1, 2] [3, 4] `shouldBe` [(1, 3), (2, 4)]
 
+    describe "Chapter Exercises" $ do
+        it "has a function that filters to include only uppercase" $ do
+            onlyUpper "HbEfLrLxO" `shouldBe` "HELLO"
+
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"
 thirdSen = "What immortal hand or eye\n"

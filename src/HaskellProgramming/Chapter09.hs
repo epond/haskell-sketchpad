@@ -1,5 +1,7 @@
 module HaskellProgramming.Chapter09 where
 
+import Data.Char
+
 eftBool :: Bool -> Bool -> [Bool]
 eftBool x y
     | x == y    = [x]
@@ -40,3 +42,6 @@ myZip :: [a] -> [b] -> [(a, b)]
 myZip _ [] = []
 myZip [] _ = []
 myZip (x : xs) (y : ys) = (x, y) : myZip xs ys
+
+onlyUpper :: [Char] -> [Char]
+onlyUpper = filter isUpper
