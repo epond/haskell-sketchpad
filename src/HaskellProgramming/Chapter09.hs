@@ -65,3 +65,8 @@ myElem :: Eq a => a -> [a] -> Bool
 --myElem _ [] = False
 --myElem a (x : xs) = a == x || myElem a xs
 myElem x = myAny (\y -> x == y)
+
+myReverse :: [a] -> [a]
+myReverse _l = doReverse _l []
+    where doReverse [] acc = acc
+          doReverse (x : xs) acc = doReverse xs (x : acc)
