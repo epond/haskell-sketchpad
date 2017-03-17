@@ -25,7 +25,8 @@ library
                    Algorithms.Mergesort,
                    HoleDrivenDevelopment,
                    HaskellProgramming.Chapter06Typeclasses,
-                   HaskellProgramming.Chapter09
+                   HaskellProgramming.Chapter09,
+                   HaskellProgramming.Cipher
   hs-source-dirs:  src
   default-language:Haskell2010
   build-depends:   base,
@@ -47,7 +48,10 @@ test-suite spec
                    QuickCheckSpec,
                    ReaderTransformerSpec,
                    TransformersSpec,
-                   WriterSpec
+                   WriterSpec,
+                   HaskellProgramming.Chapter06TypeclassesSpec,
+                   HaskellProgramming.Chapter09Spec,
+                   HaskellProgramming.CipherSpec
   build-depends:   base,
                    haskell-sketchpad,
                    hspec,
