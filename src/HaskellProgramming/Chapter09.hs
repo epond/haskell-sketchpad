@@ -35,3 +35,8 @@ myWay _ "" = []
 myWay c s
     | c == (head s) = myWay c (tail s)
     | otherwise = takeWhile (/= c) s : myWay c (dropWhile (/= c) s)
+
+myZip :: [a] -> [b] -> [(a, b)]
+myZip _ [] = []
+myZip [] _ = []
+myZip (x : xs) (y : ys) = (x, y) : myZip xs ys

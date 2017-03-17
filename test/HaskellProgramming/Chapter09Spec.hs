@@ -54,6 +54,10 @@ spec = do
                                          , "What immortal hand or eye"
                                          , "Could frame thy fearful symmetry?" ]
 
+    describe "myZip" $ do
+        it "myZip" $ do
+            myZip [1, 2] [3, 4] `shouldBe` [(1, 3), (2, 4)]
+
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"
 thirdSen = "What immortal hand or eye\n"
