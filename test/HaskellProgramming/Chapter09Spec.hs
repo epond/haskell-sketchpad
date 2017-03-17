@@ -64,6 +64,9 @@ spec = do
         it "has a function that capitalises only the first letter" $ do
             capFirst "julie" `shouldBe` "Julie"
             capFirst "" `shouldBe` ""
+        it "has a function that capitalises first letter and returns only it" $ do
+            capAndReturnFirst "julie" `shouldBe` Just 'J'
+            capAndReturnFirst "" `shouldBe` Nothing
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"
