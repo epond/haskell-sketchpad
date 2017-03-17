@@ -67,6 +67,11 @@ spec = do
         it "has a function that capitalises first letter and returns only it" $ do
             capAndReturnFirst "julie" `shouldBe` Just 'J'
             capAndReturnFirst "" `shouldBe` Nothing
+        it "has a function that returns True if any Bool in the list is True" $ do
+            myOr [] `shouldBe` False
+            myOr [False] `shouldBe` False
+            myOr [False, True] `shouldBe` True
+            myOr [False, True, False] `shouldBe` True
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"

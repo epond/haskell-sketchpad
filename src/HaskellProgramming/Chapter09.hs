@@ -53,3 +53,7 @@ capFirst (x : xs) = (toUpper x) : xs
 capAndReturnFirst :: [Char] -> Maybe Char
 capAndReturnFirst [] = Nothing
 capAndReturnFirst xs = Just (toUpper . head $ xs)
+
+myOr :: [Bool] -> Bool
+myOr [] = False
+myOr (x : xs) = x || myOr xs
