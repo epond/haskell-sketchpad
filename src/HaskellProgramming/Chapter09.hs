@@ -57,3 +57,6 @@ capAndReturnFirst xs = Just (toUpper . head $ xs)
 myOr :: [Bool] -> Bool
 myOr [] = False
 myOr (x : xs) = x || myOr xs
+
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny f xs = myOr $ map f xs

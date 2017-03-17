@@ -72,6 +72,10 @@ spec = do
             myOr [False] `shouldBe` False
             myOr [False, True] `shouldBe` True
             myOr [False, True, False] `shouldBe` True
+        it "has a function that returns True if a function applied to any of the values in the list returns True" $ do
+            myAny even [1, 3, 5] `shouldBe` False
+            myAny odd [1, 3, 5] `shouldBe` True
+            myAny odd [2, 3, 4] `shouldBe` True
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"
