@@ -76,6 +76,9 @@ spec = do
             myAny even [1, 3, 5] `shouldBe` False
             myAny odd [1, 3, 5] `shouldBe` True
             myAny odd [2, 3, 4] `shouldBe` True
+        it "has a function that returns True if a value appears in a list" $ do
+            myElem 4 [1, 2, 3] `shouldBe` False
+            myElem 3 [1, 2, 3] `shouldBe` True
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"

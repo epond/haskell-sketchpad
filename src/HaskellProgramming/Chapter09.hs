@@ -60,3 +60,8 @@ myOr (x : xs) = x || myOr xs
 
 myAny :: (a -> Bool) -> [a] -> Bool
 myAny f xs = myOr $ map f xs
+
+myElem :: Eq a => a -> [a] -> Bool
+--myElem _ [] = False
+--myElem a (x : xs) = a == x || myElem a xs
+myElem x = myAny (\y -> x == y)
