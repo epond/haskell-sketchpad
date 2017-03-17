@@ -61,6 +61,9 @@ spec = do
     describe "Chapter Exercises" $ do
         it "has a function that filters to include only uppercase" $ do
             onlyUpper "HbEfLrLxO" `shouldBe` "HELLO"
+        it "has a function that capitalises only the first letter" $ do
+            capFirst "julie" `shouldBe` "Julie"
+            capFirst "" `shouldBe` ""
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"

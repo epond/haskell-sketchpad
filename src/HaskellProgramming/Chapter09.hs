@@ -45,3 +45,7 @@ myZip (x : xs) (y : ys) = (x, y) : myZip xs ys
 
 onlyUpper :: [Char] -> [Char]
 onlyUpper = filter isUpper
+
+capFirst :: [Char] -> [Char]
+capFirst [] = []
+capFirst (x : xs) = (toUpper x) : xs
