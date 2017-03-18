@@ -91,6 +91,8 @@ spec = do
             squishAgain [[1, 2], [3, 4], [5, 6]] `shouldBe` [1, 2, 3, 4, 5, 6]
         it "has a function that finds the maximum value in a list using the supplied function" $ do
             myMaximumBy compare [1, 53, 9001, 10] `shouldBe` 9001
+        it "has a function that finds the minimum value in a list using the supplied function" $ do
+            myMinimumBy compare [53, 4, 9001, 10] `shouldBe` 4
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"

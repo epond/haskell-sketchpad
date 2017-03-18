@@ -87,3 +87,9 @@ myMaximumBy _ (x : []) = x
 myMaximumBy f (x : y : xs) = case f x y of
     GT -> myMaximumBy f (x : xs)
     _  -> myMaximumBy f (y : xs)
+
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy _ (x : []) = x
+myMinimumBy f (x : y : xs) = case f x y of
+    LT -> myMinimumBy f (x : xs)
+    _  -> myMinimumBy f (y : xs)
