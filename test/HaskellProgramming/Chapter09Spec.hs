@@ -93,6 +93,10 @@ spec = do
             myMaximumBy compare [1, 53, 9001, 10] `shouldBe` 9001
         it "has a function that finds the minimum value in a list using the supplied function" $ do
             myMinimumBy compare [53, 4, 9001, 10] `shouldBe` 4
+        it "has a function that determines the maximum value in a list" $ do
+            myMaximum [1, 53, 9001, 10] `shouldBe` 9001
+        it "has a function that determines the minimum value in a list" $ do
+            myMinimum [53, 4, 9001, 10] `shouldBe` 4
 
 firstSen = "Tyger Tyger, burning bright\n"
 secondSen = "In the forests of the night\n"
