@@ -26,13 +26,15 @@ library
                    HoleDrivenDevelopment,
                    HaskellProgramming.Chapter06Typeclasses,
                    HaskellProgramming.Chapter09,
+                   HaskellProgramming.Chapter10,
                    HaskellProgramming.Cipher
   hs-source-dirs:  src
   default-language:Haskell2010
   build-depends:   base,
                    mtl,
                    recursion-schemes,
-                   data-ordlist
+                   data-ordlist,
+                   time
 
 test-suite spec
   main-is:         Spec.hs
@@ -51,10 +53,12 @@ test-suite spec
                    WriterSpec,
                    HaskellProgramming.Chapter06TypeclassesSpec,
                    HaskellProgramming.Chapter09Spec,
+                   HaskellProgramming.Chapter10Spec,
                    HaskellProgramming.CipherSpec
   build-depends:   base,
                    haskell-sketchpad,
                    hspec,
                    mtl,
                    QuickCheck,
-                   lens
+                   lens,
+                   time
