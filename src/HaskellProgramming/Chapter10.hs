@@ -23,3 +23,8 @@ filterDbDate :: [DatabaseItem] -> [UTCTime]
 filterDbDate [] = []
 filterDbDate ((DbDate u) : rest) = u : (filterDbDate rest)
 filterDbDate (_ : rest) = filterDbDate rest
+
+filterDbNumber :: [DatabaseItem] -> [Integer]
+filterDbNumber [] = []
+filterDbNumber ((DbNumber n) : rest) = n : (filterDbNumber rest)
+filterDbNumber (_ : rest) = filterDbNumber rest
