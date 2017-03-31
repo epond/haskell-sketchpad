@@ -28,3 +28,6 @@ filterDbNumber :: [DatabaseItem] -> [Integer]
 filterDbNumber [] = []
 filterDbNumber ((DbNumber n) : rest) = n : (filterDbNumber rest)
 filterDbNumber (_ : rest) = filterDbNumber rest
+
+mostRecent :: [DatabaseItem] -> UTCTime
+mostRecent db = foldr max (UTCTime (fromGregorian 1 1 1) (secondsToDiffTime 0)) (filterDbDate db)

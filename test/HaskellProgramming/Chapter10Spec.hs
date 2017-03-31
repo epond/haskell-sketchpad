@@ -11,3 +11,5 @@ spec = do
             filterDbDate theDatabase `shouldBe` [UTCTime (fromGregorian 1911 5 1) (secondsToDiffTime 34123), UTCTime (fromGregorian 1921 5 1) (secondsToDiffTime 34123)]
         it "has a function that filters for DbNumber and returns a list of the Integer values inside them" $ do
             filterDbNumber theDatabase `shouldBe` [9001]
+        it "has a function that returns the most recent time" $ do
+            mostRecent theDatabase `shouldBe` UTCTime (fromGregorian 1921 5 1) (secondsToDiffTime 34123)
