@@ -18,3 +18,6 @@ spec = do
             sumDb db1 `shouldBe` 0
             let db2 = [DbNumber 24, DbString "5", DbNumber 76]
             sumDb db2 `shouldBe` 100
+        it "has a function that finds the average of the DbNumbers" $ do
+            let db = [DbNumber 10, DbNumber 20]
+            avgDb db `shouldBe` 15.0

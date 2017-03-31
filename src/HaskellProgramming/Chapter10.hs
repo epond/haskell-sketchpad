@@ -34,3 +34,6 @@ mostRecent db = foldr max (UTCTime (fromGregorian 1 1 1) (secondsToDiffTime 0)) 
 
 sumDb :: [DatabaseItem] -> Integer
 sumDb db = foldr (+) 0 (filterDbNumber db)
+
+avgDb :: [DatabaseItem] -> Double
+avgDb db = fromIntegral (sumDb db) / fromIntegral (length db)
