@@ -21,3 +21,13 @@ spec = do
         it "has a function that finds the average of the DbNumbers" $ do
             let db = [DbNumber 10, DbNumber 20]
             avgDb db `shouldBe` 15.0
+    describe "Rewriting functions using folds" $ do
+        it "has a function that returns True if any Bool in the list is True" $ do
+            myOr [] `shouldBe` False
+            myOr [False] `shouldBe` False
+            myOr [False, True] `shouldBe` True
+            myOr [False, True, False] `shouldBe` True
+        it "has a function that returns True if a function applied to any of the values in the list returns True" $ do
+            myAny even [1, 3, 5] `shouldBe` False
+            myAny odd [1, 3, 5] `shouldBe` True
+            myAny odd [2, 3, 4] `shouldBe` True

@@ -37,3 +37,11 @@ sumDb db = foldr (+) 0 (filterDbNumber db)
 
 avgDb :: [DatabaseItem] -> Double
 avgDb db = fromIntegral (sumDb db) / fromIntegral (length db)
+
+-- Rewriting functions using folds
+
+myOr :: [Bool] -> Bool
+myOr = foldr (||) False
+
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny f = foldr (\x y -> y || f x) False
