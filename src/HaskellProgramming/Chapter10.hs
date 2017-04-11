@@ -53,3 +53,6 @@ myAny f = foldr (\x y -> y || f x) False
 -- using any
 myElem :: Eq a => a -> [a] -> Bool
 myElem x = myAny $ (==) x
+
+myReverse :: [a] -> [a]
+myReverse = foldl (flip (:)) []

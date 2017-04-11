@@ -34,3 +34,6 @@ spec = do
         it "has a function that returns True if a value appears in a list" $ do
             myElem 4 [1, 2, 3] `shouldBe` False
             myElem 3 [1, 2, 3] `shouldBe` True
+        it "has a function that reverses a list" $ do
+            myReverse "blah" `shouldBe` "halb"
+            myReverse [1..5] `shouldBe` [5, 4, 3, 2, 1]
