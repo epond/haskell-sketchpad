@@ -37,3 +37,6 @@ spec = do
         it "has a function that reverses a list" $ do
             myReverse "blah" `shouldBe` "halb"
             myReverse [1..5] `shouldBe` [5, 4, 3, 2, 1]
+        it "has a mapping function" $ do
+            myMap (+1) [1,2,3] `shouldBe` [2,3,4]
+            myMap length ["Hi", "Dave"] `shouldBe` [2,4]

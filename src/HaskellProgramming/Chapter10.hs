@@ -56,3 +56,6 @@ myElem x = myAny $ (==) x
 
 myReverse :: [a] -> [a]
 myReverse = foldl (flip (:)) []
+
+myMap :: (a -> b) -> [a] -> [b]
+myMap f = foldr (\x ys -> (f x) : ys) []
