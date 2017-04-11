@@ -45,3 +45,11 @@ myOr = foldr (||) False
 
 myAny :: (a -> Bool) -> [a] -> Bool
 myAny f = foldr (\x y -> y || f x) False
+
+-- using folding
+--myElem :: Eq a => a -> [a] -> Bool
+--myElem x = foldr (\a b -> x == a || b) False
+
+-- using any
+myElem :: Eq a => a -> [a] -> Bool
+myElem x = myAny $ (==) x
