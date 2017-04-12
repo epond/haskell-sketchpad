@@ -59,3 +59,8 @@ myReverse = foldl (flip (:)) []
 
 myMap :: (a -> b) -> [a] -> [b]
 myMap f = foldr (\x ys -> (f x) : ys) []
+
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter f = foldr (\x ys -> if (f x)
+                             then x : ys
+                             else ys) []

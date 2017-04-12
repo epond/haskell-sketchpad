@@ -40,3 +40,5 @@ spec = do
         it "has a mapping function" $ do
             myMap (+1) [1,2,3] `shouldBe` [2,3,4]
             myMap length ["Hi", "Dave"] `shouldBe` [2,4]
+        it "has a filter function" $ do
+            myFilter even [1..7] `shouldBe` [2,4,6]
