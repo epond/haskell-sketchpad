@@ -64,3 +64,6 @@ myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter f = foldr (\x ys -> if (f x)
                              then x : ys
                              else ys) []
+
+squish :: [[a]] -> [a]
+squish = foldr (++) []

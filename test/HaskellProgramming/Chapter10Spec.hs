@@ -42,3 +42,5 @@ spec = do
             myMap length ["Hi", "Dave"] `shouldBe` [2,4]
         it "has a filter function" $ do
             myFilter even [1..7] `shouldBe` [2,4,6]
+        it "has a function to flatten lists" $ do
+            squish [[1, 2], [3, 4], [5, 6]] `shouldBe` [1, 2, 3, 4, 5, 6]
