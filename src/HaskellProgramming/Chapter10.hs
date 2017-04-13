@@ -67,3 +67,6 @@ myFilter f = foldr (\x ys -> if (f x)
 
 squish :: [[a]] -> [a]
 squish = foldr (++) []
+
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap f = foldr (\a b -> f a ++ b) []

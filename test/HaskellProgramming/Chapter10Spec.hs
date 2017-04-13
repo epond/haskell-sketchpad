@@ -44,3 +44,6 @@ spec = do
             myFilter even [1..7] `shouldBe` [2,4,6]
         it "has a function to flatten lists" $ do
             squish [[1, 2], [3, 4], [5, 6]] `shouldBe` [1, 2, 3, 4, 5, 6]
+        it "has a function that maps a function over a list and concatenates the result" $ do
+            squishMap (\x -> [1, x, 3]) [2] `shouldBe` [1, 2, 3]
+            squishMap (\x -> "WO "++[x]++" HOO ") "123" `shouldBe` "WO 1 HOO WO 2 HOO WO 3 HOO "
