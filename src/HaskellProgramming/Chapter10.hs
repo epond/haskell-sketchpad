@@ -75,6 +75,4 @@ squishAgain :: [[a]] -> [a]
 squishAgain = squishMap id
 
 myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
-myMaximumBy f xs = foldr (\a b -> case f a b of
-    GT -> a
-    _  -> b) (last xs) xs
+myMaximumBy f xs = foldr (\a b -> if f a b == GT then a else b) (last xs) xs
