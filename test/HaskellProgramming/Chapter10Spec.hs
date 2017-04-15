@@ -49,3 +49,7 @@ spec = do
             squishMap (\x -> "WO "++[x]++" HOO ") "123" `shouldBe` "WO 1 HOO WO 2 HOO WO 3 HOO "
         it "has a function to flatten lists, reusing squishMap" $ do
             squishAgain [[1, 2], [3, 4], [5, 6]] `shouldBe` [1, 2, 3, 4, 5, 6]
+        it "has a function that finds the maximum value in a list using the supplied function" $ do
+            myMaximumBy (\_ _ -> GT) [1..10] `shouldBe` 1
+            myMaximumBy (\_ _ -> LT) [1..10] `shouldBe` 10
+            myMaximumBy compare [1, 53, 9001, 10] `shouldBe` 9001

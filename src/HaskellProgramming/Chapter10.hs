@@ -73,3 +73,8 @@ squishMap f = foldr (\a b -> f a ++ b) []
 
 squishAgain :: [[a]] -> [a]
 squishAgain = squishMap id
+
+myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy f xs = foldr (\a b -> case f a b of
+    GT -> a
+    _  -> b) (last xs) xs
