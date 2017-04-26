@@ -15,7 +15,5 @@ instance Weighable Car where
 instance Weighable Motorbike where
     weight _ = 10
 
-data Vehicle = CarVehicle Car | MotorbikeVehicle Motorbike
-
 sumWeighable :: (Weighable a, Weighable b) => a -> b -> Int
 sumWeighable a b = weight a + weight b
