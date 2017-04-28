@@ -20,3 +20,7 @@ mapTree f (Node left a right) =
 preorder :: BinaryTree a -> [a]
 preorder Leaf = []
 preorder (Node left a right) = a : (preorder left) ++ (preorder right)
+
+inorder :: BinaryTree a -> [a]
+inorder Leaf = []
+inorder (Node left a right) = (inorder left) ++ [a] ++ (inorder right)
