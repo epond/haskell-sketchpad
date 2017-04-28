@@ -22,3 +22,6 @@ spec = do
             inorder (Node (Node Leaf 1 Leaf) 2 (Node Leaf 3 Leaf)) `shouldBe` [1, 2, 3]
         it "can convert to a postordered list" $ do
             postorder (Node (Node Leaf 1 Leaf) 2 (Node Leaf 3 Leaf)) `shouldBe` [1, 3, 2]
+        it "has a function to perform a catamorphism" $ do
+            foldTree (+) 0 (Node (Node Leaf 4 Leaf) 7 (Node Leaf 3 Leaf)) `shouldBe` 14
+            foldTree (*) 1 (Node (Node Leaf 4 Leaf) 7 (Node Leaf 3 Leaf)) `shouldBe` 84

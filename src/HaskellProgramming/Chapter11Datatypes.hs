@@ -28,3 +28,7 @@ inorder (Node left a right) = (inorder left) ++ [a] ++ (inorder right)
 postorder :: BinaryTree a -> [a]
 postorder Leaf = []
 postorder (Node left a right) = (postorder left) ++ (postorder right) ++ [a]
+
+foldTree :: (a -> b -> b) -> b -> BinaryTree a -> b
+foldTree _ z Leaf = z
+foldTree f z (Node left a right) = undefined
