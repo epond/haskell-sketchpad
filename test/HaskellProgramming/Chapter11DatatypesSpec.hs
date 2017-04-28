@@ -16,3 +16,5 @@ spec = do
             let testTree' = Node (Node Leaf 3 Leaf) 1 (Node Leaf 4 Leaf)
             let mapExpected = Node (Node Leaf 4 Leaf) 2 (Node Leaf 5 Leaf)
             mapTree (+1) testTree' `shouldBe` mapExpected
+        it "can convert to a preordered list" $ do
+            preorder (Node (Node Leaf 1 Leaf) 2 (Node Leaf 3 Leaf)) `shouldBe` [2, 1, 3]

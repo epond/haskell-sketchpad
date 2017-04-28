@@ -16,3 +16,7 @@ mapTree :: (a -> b) -> BinaryTree a -> BinaryTree b
 mapTree _ Leaf = Leaf
 mapTree f (Node left a right) =
     Node (mapTree f left) (f a) (mapTree f right)
+
+preorder :: BinaryTree a -> [a]
+preorder Leaf = []
+preorder (Node left a right) = a : (preorder left) ++ (preorder right)
