@@ -24,3 +24,7 @@ preorder (Node left a right) = a : (preorder left) ++ (preorder right)
 inorder :: BinaryTree a -> [a]
 inorder Leaf = []
 inorder (Node left a right) = (inorder left) ++ [a] ++ (inorder right)
+
+postorder :: BinaryTree a -> [a]
+postorder Leaf = []
+postorder (Node left a right) = (postorder left) ++ (postorder right) ++ [a]
