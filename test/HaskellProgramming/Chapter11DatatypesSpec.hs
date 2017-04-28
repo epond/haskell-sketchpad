@@ -12,3 +12,7 @@ spec = do
             insert' 5 (insert' 0 Leaf) `shouldBe` Node Leaf 0 (Node Leaf 5 Leaf)
         it "can insert to a tree of two levels" $ do
             insert' 3 (insert' 5 (insert' 0 Leaf)) `shouldBe` Node Leaf 0 (Node (Node Leaf 3 Leaf) 5 Leaf)
+        it "can map a function over each node" $ do
+            let testTree' = Node (Node Leaf 3 Leaf) 1 (Node Leaf 4 Leaf)
+            let mapExpected = Node (Node Leaf 4 Leaf) 2 (Node Leaf 5 Leaf)
+            mapTree (+1) testTree' `shouldBe` mapExpected
