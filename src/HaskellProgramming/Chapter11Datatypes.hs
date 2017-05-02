@@ -31,4 +31,6 @@ postorder (Node left a right) = (postorder left) ++ (postorder right) ++ [a]
 
 foldTree :: (a -> b -> b) -> b -> BinaryTree a -> b
 foldTree _ z Leaf = z
-foldTree f z (Node left a right) = undefined
+foldTree f z (Node left a right) = f a l
+    where l = foldTree f r left
+          r = foldTree f z right
