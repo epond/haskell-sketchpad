@@ -11,6 +11,11 @@ spec = do
         it "decodes" $ do
             unCaesar 3 "def" `shouldBe` "abc"
     describe "Vigenere Cipher" $ do
+        it "can rotate by character" $ do
+            rotByChar 'a' 'a' `shouldBe` 'a'
+            rotByChar 'c' 'a' `shouldBe` 'c'
+            rotByChar 'c' 'd' `shouldBe` 'f'
+            rotByChar 'd' 'y' `shouldBe` 'b'
         it "encodes" $ do
             vigenere "ally" "meetatdawn" `shouldBe` "mppraeoywy"
         it "decodes" $ do
