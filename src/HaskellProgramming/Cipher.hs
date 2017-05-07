@@ -5,7 +5,7 @@ import Data.Char
 -- Caesar Cipher
 
 caesar :: Int -> [Char] -> [Char]
-caesar n = map (rot n)
+caesar = map . rot
 
 unCaesar :: Int -> [Char] -> [Char]
 unCaesar n = map (rot (-n))
@@ -16,13 +16,19 @@ rot n c = chr . (+97) . (flip mod 26) . (+n) . (flip (-) 97) . ord $ c
 -- Vigenère Cipher
 
 vigenere :: [Char] -> [Char] -> [Char]
-vigenere _ [] = []
-vigenere [] input = input
-vigenere keyword input = zipWith rotByChar rotmap input
-    where rotmap = take (length input) . concat $ repeat keyword
+vigenere = vigenere' rotForwardByChar
 
 unVigenere :: [Char] -> [Char] -> [Char]
-unVigenere _ _ = ""
+unVigenere = vigenere' rotBackwardByChar
 
-rotByChar :: Char -> Char -> Char
-rotByChar c = rot . (flip (-) 97) $ ord . toLower $ c
+vigenere' :: (Char -> Char -> Char) -> [Char] -> [Char] -> [Char]
+vigenere' _ _ [] = []
+vigenere' _ [] input = input
+vigenere' rotByChar keyword input = zipWith rotByChar rotmap input
+    where rotmap = take (length input) . concat $ repeat keyword
+
+rotForwardByChar :: Char -> Char -> Char
+rotForwardByChar c = rot . (flip (-) 97) $ ord . toLower $ c
+
+rotBackwardByChar :: Char -> Char -> Char
+rotBackwardByChar c = rot . ((-) 97) $ ord . toLower $ c
