@@ -16,10 +16,10 @@ rot n c = chr . (+97) . (flip mod 26) . (+n) . (flip (-) 97) . ord $ c
 -- Vigenère Cipher
 
 vigenere :: [Char] -> [Char] -> [Char]
-vigenere = vigenere' rotForwardByChar
+vigenere = vigenere' $ rotByChar (flip (-))
 
 unVigenere :: [Char] -> [Char] -> [Char]
-unVigenere = vigenere' rotBackwardByChar
+unVigenere = vigenere' $ rotByChar (-)
 
 vigenere' :: (Char -> Char -> Char) -> [Char] -> [Char] -> [Char]
 vigenere' _ _ [] = []
@@ -27,8 +27,5 @@ vigenere' _ [] input = input
 vigenere' rotByChar keyword input = zipWith rotByChar rotmap input
     where rotmap = take (length input) . concat $ repeat keyword
 
-rotForwardByChar :: Char -> Char -> Char
-rotForwardByChar c = rot . (flip (-) 97) $ ord . toLower $ c
-
-rotBackwardByChar :: Char -> Char -> Char
-rotBackwardByChar c = rot . ((-) 97) $ ord . toLower $ c
+rotByChar :: (Int -> Int -> Int) -> Char -> Char -> Char
+rotByChar f c = rot . (f 97) $ ord . toLower $ c
