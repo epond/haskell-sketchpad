@@ -31,4 +31,6 @@ spec = do
             isSubsequenceOf "blah" "wootblah" `shouldBe` True
             isSubsequenceOf "blah" "wboloath" `shouldBe` True
             isSubsequenceOf "blah" "wootbla" `shouldBe` False
+            isSubsequenceOf "" "blah" `shouldBe` True
+            isSubsequenceOf "b" "" `shouldBe` False
 
