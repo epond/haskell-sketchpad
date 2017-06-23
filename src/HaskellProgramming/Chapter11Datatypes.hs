@@ -1,5 +1,7 @@
 module HaskellProgramming.Chapter11Datatypes where
 
+import Data.Char (toUpper)
+
 data BinaryTree a =
     Leaf
   | Node (BinaryTree a) a (BinaryTree a)
@@ -39,3 +41,7 @@ isSubsequenceOf :: (Eq a) => [a] -> [a] -> Bool
 isSubsequenceOf [] _ = True
 isSubsequenceOf _ [] = False
 isSubsequenceOf (x:xs) l = elem x l && isSubsequenceOf xs l
+
+capitaliseWords :: String -> [(String, String)]
+capitaliseWords s = map tupelify (words s)
+    where tupelify w@(x:xs) = (w, (toUpper x) : xs)
