@@ -39,4 +39,5 @@ spec = do
         it "can capitalise a word" $ do
             capitaliseWord "Hello" `shouldBe` "Hello"
             capitaliseWord "hello" `shouldBe` "Hello"
-
+        it "can capitalise sentences in a paragraph" $ do
+            capitaliseParagraph "foo blah. woot ha." `shouldBe` "Foo blah. Woot ha."

@@ -49,3 +49,14 @@ capitaliseWords s = map tupelify (words s)
 capitaliseWord :: String -> String
 capitaliseWord [] = []
 capitaliseWord (x:xs) = (toUpper x) : xs
+
+isStopWord :: String -> Bool
+isStopWord [] = False
+isStopWord w = (head . reverse) w == '.'
+
+takeWhileInclusive :: (a -> Bool) -> [a] -> [a]
+takeWhileInclusive _ [] = []
+takeWhileInclusive p (x:xs) = x : if p x then takeWhileInclusive p xs else []
+
+capitaliseParagraph :: String -> String
+capitaliseParagraph p = concat $ takeWhileInclusive (not . isStopWord) (words p)
