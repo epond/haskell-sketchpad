@@ -33,6 +33,10 @@ spec = do
             isSubsequenceOf "blah" "wootbla" `shouldBe` False
             isSubsequenceOf "" "blah" `shouldBe` True
             isSubsequenceOf "b" "" `shouldBe` False
-        it "can be used to implement a function that capitalises words" $ do
+        it "can be used to implement a function that capitalises words in a tuple" $ do
             capitaliseWords "hello world" `shouldBe` [("hello", "Hello"), ("world", "World")]
+    describe "Language exercises" $ do
+        it "can capitalise a word" $ do
+            capitaliseWord "Hello" `shouldBe` "Hello"
+            capitaliseWord "hello" `shouldBe` "Hello"
 

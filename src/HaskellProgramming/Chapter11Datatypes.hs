@@ -45,3 +45,7 @@ isSubsequenceOf (x:xs) l = elem x l && isSubsequenceOf xs l
 capitaliseWords :: String -> [(String, String)]
 capitaliseWords s = map tupelify (words s)
     where tupelify w@(x:xs) = (w, (toUpper x) : xs)
+
+capitaliseWord :: String -> String
+capitaliseWord [] = []
+capitaliseWord (x:xs) = (toUpper x) : xs
