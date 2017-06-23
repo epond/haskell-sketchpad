@@ -34,3 +34,8 @@ foldTree _ z Leaf = z
 foldTree f z (Node left a right) = f a l
     where l = foldTree f r left
           r = foldTree f z right
+
+isSubsequenceOf :: (Eq a) => [a] -> [a] -> Bool
+isSubsequenceOf [] _ = True
+isSubsequenceOf [x : xs] [] = False
+-- isSubsequenceOf l @ (x : xs) _ = undefined

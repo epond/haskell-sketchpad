@@ -25,3 +25,10 @@ spec = do
         it "has a function to perform a catamorphism" $ do
             foldTree (+) 0 (Node (Node Leaf 4 Leaf) 7 (Node Leaf 3 Leaf)) `shouldBe` 14
             foldTree (*) 1 (Node (Node Leaf 4 Leaf) 7 (Node Leaf 3 Leaf)) `shouldBe` 84
+    describe "As-patterns" $ do
+        it "can be used to implement a subsequence function" $ do
+            isSubsequenceOf "blah" "blahwoot" `shouldBe` True
+            isSubsequenceOf "blah" "wootblah" `shouldBe` True
+            isSubsequenceOf "blah" "wboloath" `shouldBe` True
+            isSubsequenceOf "blah" "wootbla" `shouldBe` False
+
