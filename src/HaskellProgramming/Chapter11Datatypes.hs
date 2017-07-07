@@ -1,6 +1,7 @@
 module HaskellProgramming.Chapter11Datatypes where
 
 import Data.Char (toUpper)
+import Data.List (intercalate)
 
 data BinaryTree a =
     Leaf
@@ -13,6 +14,7 @@ insert' b (Node left a right)
     | b == a = Node left a right
     | b < a  = Node (insert' b left) a right
     | b > a  = Node left a (insert' b right)
+insert' _ t = t
 
 mapTree :: (a -> b) -> BinaryTree a -> BinaryTree b
 mapTree _ Leaf = Leaf
@@ -45,6 +47,7 @@ isSubsequenceOf (x:xs) l = elem x l && isSubsequenceOf xs l
 capitaliseWords :: String -> [(String, String)]
 capitaliseWords s = map tupelify (words s)
     where tupelify w@(x:xs) = (w, (toUpper x) : xs)
+          tupelify _ = ("", "")
 
 capitaliseWord :: String -> String
 capitaliseWord [] = []
@@ -58,5 +61,15 @@ takeWhileInclusive :: (a -> Bool) -> [a] -> [a]
 takeWhileInclusive _ [] = []
 takeWhileInclusive p (x:xs) = x : if p x then takeWhileInclusive p xs else []
 
+dropWhileExclusive :: (a -> Bool) -> [a] -> [a]
+dropWhileExclusive _ [] = []
+dropWhileExclusive _ (_:[]) = []
+dropWhileExclusive p (_:x':xs) = if p x' then dropWhileExclusive p xs else xs
+
+sentences :: String -> [String]
+sentences [] = []
+sentences p = (capitaliseWord . glue) (takeWhileInclusive (not . isStopWord) (words p)) : sentences (glue (dropWhileExclusive (not . isStopWord) (words p)))
+    where glue = intercalate " "
+
 capitaliseParagraph :: String -> String
-capitaliseParagraph p = concat $ takeWhileInclusive (not . isStopWord) (words p)
+capitaliseParagraph p = intercalate " " $ sentences p
