@@ -1,7 +1,7 @@
 module HaskellProgramming.Chapter11Datatypes where
 
-import Data.Char (toUpper)
-import Data.List (intercalate)
+import Data.Char (toUpper, isUpper, toLower)
+import Data.List (intercalate, elemIndex)
 
 data BinaryTree a =
     Leaf
@@ -80,31 +80,37 @@ capitaliseParagraph p = intercalate " " $ sentences p
 
 -- Phone exercises
 
-data PhoneButton = TextButton String | Star
+data PhoneButton = TextButton String
 
 data DaPhone = DaPhone [PhoneButton]
 
 standardLayout :: DaPhone
 standardLayout = DaPhone [
     TextButton "1",
-    TextButton "2abc",
-    TextButton "3def",
-    TextButton "4ghi",
-    TextButton "5jkl",
-    TextButton "6mno",
-    TextButton "7pqrs",
-    TextButton "8tuv",
-    TextButton "9wxyz",
-    TextButton "0 ",
-    TextButton "#.,",
-    Star
+    TextButton "abc2",
+    TextButton "def3",
+    TextButton "ghi4",
+    TextButton "jkl5",
+    TextButton "mno6",
+    TextButton "pqrs7",
+    TextButton "tuv8",
+    TextButton "wxy9",
+    TextButton " 0",
+    TextButton ".,#"
     ]
 
 type Digit = Char
 type Presses = Int
 
+textTaps :: DaPhone -> Char -> [(Digit, Presses)]
+textTaps (DaPhone []) _ = []
+textTaps (DaPhone ((TextButton glyphs):xs)) char = case elemIndex char glyphs of
+    Just index -> [((head . reverse) glyphs, index + 1)]
+    Nothing -> textTaps (DaPhone xs) char
+
 reverseTaps :: DaPhone -> Char -> [(Digit, Presses)]
-reverseTaps = undefined
+reverseTaps layout char = if isUpper char then ('*', 1) : rest else rest
+    where rest = textTaps layout (toLower char)
 
 cellPhonesDead :: DaPhone -> String -> [(Digit, Presses)]
 cellPhonesDead = undefined
