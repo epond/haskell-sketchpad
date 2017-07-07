@@ -49,3 +49,6 @@ spec = do
             reverseTaps standardLayout '3' `shouldBe` [('3', 4)]
             reverseTaps standardLayout ' ' `shouldBe` [('0', 1)]
             reverseTaps standardLayout 'Q' `shouldBe` [('*', 1), ('7', 2)]
+        it "can convert a string into button presses" $ do
+            cellPhonesDead standardLayout "Ya" `shouldBe` [('*', 1), ('9', 3), ('2', 1)]
+            cellPhonesDead standardLayout "U 1st" `shouldBe` [('*', 1), ('8', 2), ('0', 1), ('1', 1), ('7', 4), ('8', 1)]
