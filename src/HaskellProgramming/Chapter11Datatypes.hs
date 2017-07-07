@@ -39,6 +39,8 @@ foldTree f z (Node left a right) = f a l
     where l = foldTree f r left
           r = foldTree f z right
 
+-- As-patterns
+
 isSubsequenceOf :: (Eq a) => [a] -> [a] -> Bool
 isSubsequenceOf [] _ = True
 isSubsequenceOf _ [] = False
@@ -52,6 +54,8 @@ capitaliseWords s = map tupelify (words s)
 capitaliseWord :: String -> String
 capitaliseWord [] = []
 capitaliseWord (x:xs) = (toUpper x) : xs
+
+-- Language exercises
 
 isStopWord :: String -> Bool
 isStopWord [] = False
@@ -73,3 +77,34 @@ sentences p = (capitaliseWord . glue) (takeWhileInclusive (not . isStopWord) (wo
 
 capitaliseParagraph :: String -> String
 capitaliseParagraph p = intercalate " " $ sentences p
+
+-- Phone exercises
+
+data PhoneButton = TextButton String | Star
+
+data DaPhone = DaPhone [PhoneButton]
+
+standardLayout :: DaPhone
+standardLayout = DaPhone [
+    TextButton "1",
+    TextButton "2abc",
+    TextButton "3def",
+    TextButton "4ghi",
+    TextButton "5jkl",
+    TextButton "6mno",
+    TextButton "7pqrs",
+    TextButton "8tuv",
+    TextButton "9wxyz",
+    TextButton "0 ",
+    TextButton "#.,",
+    Star
+    ]
+
+type Digit = Char
+type Presses = Int
+
+reverseTaps :: DaPhone -> Char -> [(Digit, Presses)]
+reverseTaps = undefined
+
+cellPhonesDead :: DaPhone -> String -> [(Digit, Presses)]
+cellPhonesDead = undefined

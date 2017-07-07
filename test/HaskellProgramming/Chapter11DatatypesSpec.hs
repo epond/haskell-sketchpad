@@ -43,3 +43,9 @@ spec = do
             capitaliseParagraph "foo blah. woot ha." `shouldBe` "Foo blah. Woot ha."
         it "can capitalise three sentences in a paragraph" $ do
             capitaliseParagraph "foo blah. woot ha. nice." `shouldBe` "Foo blah. Woot ha. Nice."
+    describe "Phone exercises" $ do
+        it "can convert a character into button presses" $ do
+            reverseTaps standardLayout 'y' `shouldBe` [('9', 3)]
+            reverseTaps standardLayout '3' `shouldBe` [('3', 4)]
+            reverseTaps standardLayout ' ' `shouldBe` [('0', 1)]
+            reverseTaps standardLayout 'Q' `shouldBe` [('*', 1), ('7', 2)]
