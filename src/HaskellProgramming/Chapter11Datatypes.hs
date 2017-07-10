@@ -116,4 +116,4 @@ cellPhonesDead :: DaPhone -> String -> [(Digit, Presses)]
 cellPhonesDead layout message = concat $ map (reverseTaps layout) message
 
 fingerTaps :: [(Digit, Presses)] -> Presses
-fingerTaps = undefined
+fingerTaps list = sum $ map snd list

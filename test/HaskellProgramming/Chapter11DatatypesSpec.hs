@@ -52,3 +52,6 @@ spec = do
         it "can convert a string into button presses" $ do
             cellPhonesDead standardLayout "Ya" `shouldBe` [('*', 1), ('9', 3), ('2', 1)]
             cellPhonesDead standardLayout "U 1st" `shouldBe` [('*', 1), ('8', 2), ('0', 1), ('1', 1), ('7', 4), ('8', 1)]
+        it "can calculate how many button presses are needed for a given message" $ do
+            fingerTaps [('*', 1), ('9', 3), ('2', 1)] `shouldBe` 5
+            fingerTaps [('*', 1), ('8', 2), ('0', 1), ('1', 1), ('7', 4), ('8', 1)] `shouldBe` 10
