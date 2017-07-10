@@ -117,3 +117,6 @@ cellPhonesDead layout message = concat $ map (reverseTaps layout) message
 
 fingerTaps :: [(Digit, Presses)] -> Presses
 fingerTaps list = sum $ map snd list
+
+mostPopularLetter :: String -> Char
+mostPopularLetter = undefined

@@ -55,3 +55,7 @@ spec = do
         it "can calculate how many button presses are needed for a given message" $ do
             fingerTaps [('*', 1), ('9', 3), ('2', 1)] `shouldBe` 5
             fingerTaps [('*', 1), ('8', 2), ('0', 1), ('1', 1), ('7', 4), ('8', 1)] `shouldBe` 10
+        it "can calculate the most popular letter" $ do
+            mostPopularLetter "a bb ccc dd" `shouldBe` 'c'
+            mostPopularLetter "a bb cCCc ddd" `shouldBe` 'd'
+            mostPopularLetter "a bb CCC dd" `shouldBe` 'C'
