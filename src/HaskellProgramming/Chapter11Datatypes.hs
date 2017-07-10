@@ -114,3 +114,6 @@ reverseTaps layout char = if isUpper char then ('*', 1) : rest else rest
 
 cellPhonesDead :: DaPhone -> String -> [(Digit, Presses)]
 cellPhonesDead layout message = concat $ map (reverseTaps layout) message
+
+fingerTaps :: [(Digit, Presses)] -> Presses
+fingerTaps = undefined
