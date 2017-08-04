@@ -128,3 +128,9 @@ mostPopularLetter message = fst . head . reverse $
     sortOn snd (map freqTuple (distinctLetters message))
     where freqTuple x = (x, count x message)
           count x = length . filter (==x)
+
+mostPopularLetterCost :: DaPhone -> String -> Presses
+mostPopularLetterCost layout message = letterFreq * letterCost
+    where letter = mostPopularLetter message
+          letterFreq = length (filter (== letter) message)
+          letterCost = fingerTaps (reverseTaps layout letter)

@@ -62,3 +62,7 @@ spec = do
             mostPopularLetter "a bb cccc ddd" `shouldBe` 'c'
             mostPopularLetter "a bb cCCc dddd" `shouldBe` 'd'
             mostPopularLetter "a bb CCCC ddd" `shouldBe` 'C'
+        it "can calculate the cost of the most popular letter" $ do
+            mostPopularLetterCost standardLayout "a" `shouldBe` 1
+            mostPopularLetterCost standardLayout "a bb cCCc yyyy" `shouldBe` 12
+            mostPopularLetterCost standardLayout "a bb CCCC yyy" `shouldBe` 16
