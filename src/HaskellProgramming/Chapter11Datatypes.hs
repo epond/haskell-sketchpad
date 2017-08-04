@@ -102,15 +102,15 @@ standardLayout = DaPhone [
 type Digit = Char
 type Presses = Int
 
-textTaps :: DaPhone -> Char -> [(Digit, Presses)]
-textTaps (DaPhone []) _ = []
-textTaps (DaPhone ((TextButton glyphs):xs)) char = case elemIndex char glyphs of
+reverseTapsAlwaysLower :: DaPhone -> Char -> [(Digit, Presses)]
+reverseTapsAlwaysLower (DaPhone []) _ = []
+reverseTapsAlwaysLower (DaPhone ((TextButton glyphs):xs)) char = case elemIndex char glyphs of
     Just index -> [((head . reverse) glyphs, index + 1)]
-    Nothing -> textTaps (DaPhone xs) char
+    Nothing -> reverseTapsAlwaysLower (DaPhone xs) char
 
 reverseTaps :: DaPhone -> Char -> [(Digit, Presses)]
 reverseTaps layout char = if isUpper char then ('*', 1) : rest else rest
-    where rest = textTaps layout (toLower char)
+    where rest = reverseTapsAlwaysLower layout (toLower char)
 
 cellPhonesDead :: DaPhone -> String -> [(Digit, Presses)]
 cellPhonesDead layout message = concat $ map (reverseTaps layout) message
@@ -119,4 +119,4 @@ fingerTaps :: [(Digit, Presses)] -> Presses
 fingerTaps list = sum $ map snd list
 
 mostPopularLetter :: String -> Char
-mostPopularLetter = undefined
+mostPopularLetter _ = '.'
