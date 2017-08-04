@@ -55,7 +55,7 @@ spec = do
         it "can calculate how many button presses are needed for a given message" $ do
             fingerTaps [('*', 1), ('9', 3), ('2', 1)] `shouldBe` 5
             fingerTaps [('*', 1), ('8', 2), ('0', 1), ('1', 1), ('7', 4), ('8', 1)] `shouldBe` 10
-        it "can calculate the most popular letter" $ do
+        it "can calculate the most popular letter from a String" $ do
             mostPopularLetter "a" `shouldBe` 'a'
             mostPopularLetter "aab" `shouldBe` 'a'
             mostPopularLetter "abb" `shouldBe` 'b'
@@ -66,3 +66,7 @@ spec = do
             mostPopularLetterCost standardLayout "a" `shouldBe` 1
             mostPopularLetterCost standardLayout "a bb cCCc yyyy" `shouldBe` 12
             mostPopularLetterCost standardLayout "a bb CCCC yyy" `shouldBe` 16
+        it "can calculate the most popular letter from a List of String" $ do
+            coolestLtr ["a","bb","cccc","ddd"] `shouldBe` 'c'
+        it "can calculate the most popular word" $ do
+            coolestWord ["baa", "baa", "black", "sheep"] `shouldBe` "baa"

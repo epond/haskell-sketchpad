@@ -123,14 +123,25 @@ distinctLetters = go [] where
     go acc [] = acc
     go acc (x:xs) = if elem x acc then go acc xs else go (x:acc) xs
 
+count :: Eq a => a -> [a] -> Int
+count x = length . filter (==x)
+
 mostPopularLetter :: String -> Char
 mostPopularLetter message = fst . head . reverse $
-    sortOn snd (map freqTuple (distinctLetters message))
-    where freqTuple x = (x, count x message)
-          count x = length . filter (==x)
+    sortOn snd (map letterAndCount (distinctLetters message))
+    where letterAndCount letter = (letter, count letter message)
 
 mostPopularLetterCost :: DaPhone -> String -> Presses
 mostPopularLetterCost layout message = letterFreq * letterCost
     where letter = mostPopularLetter message
           letterFreq = length (filter (== letter) message)
           letterCost = fingerTaps (reverseTaps layout letter)
+
+coolestLtr :: [String] -> Char
+coolestLtr = mostPopularLetter . concat
+
+coolestWord :: [String] -> String
+coolestWord conversation = fst . head . reverse $
+    sortOn snd (map wordAndCount wordList)
+    where wordAndCount word = (word, count word wordList)
+          wordList = words $ intercalate " " conversation
