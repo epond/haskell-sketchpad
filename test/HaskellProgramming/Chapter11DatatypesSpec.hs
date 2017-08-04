@@ -70,3 +70,6 @@ spec = do
             coolestLtr ["a","bb","cccc","ddd"] `shouldBe` 'c'
         it "can calculate the most popular word" $ do
             coolestWord ["baa", "baa", "black", "sheep"] `shouldBe` "baa"
+    describe "Hutton's Razor" $ do
+        it "can reduce an expression to its final sum" $ do
+            eval (Add (Lit 1) (Lit 9001)) `shouldBe` 9002

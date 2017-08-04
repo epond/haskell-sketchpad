@@ -145,3 +145,13 @@ coolestWord conversation = fst . head . reverse $
     sortOn snd (map wordAndCount wordList)
     where wordAndCount word = (word, count word wordList)
           wordList = words $ intercalate " " conversation
+
+-- Hutton's Razor
+
+data Expr
+    = Lit Integer
+    | Add Expr Expr
+
+eval :: Expr -> Integer
+eval (Lit n) = n
+eval (Add x y) = eval x + eval y
