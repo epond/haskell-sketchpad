@@ -1,7 +1,7 @@
 module HaskellProgramming.Chapter11Datatypes where
 
 import Data.Char (toUpper, isUpper, toLower)
-import Data.List (intercalate, elemIndex)
+import Data.List (intercalate, elemIndex, sortOn)
 
 data BinaryTree a =
     Leaf
@@ -118,5 +118,13 @@ cellPhonesDead layout message = concat $ map (reverseTaps layout) message
 fingerTaps :: [(Digit, Presses)] -> Presses
 fingerTaps list = sum $ map snd list
 
+distinctLetters :: String -> [Char]
+distinctLetters = go [] where
+    go acc [] = acc
+    go acc (x:xs) = if elem x acc then go acc xs else go (x:acc) xs
+
 mostPopularLetter :: String -> Char
-mostPopularLetter _ = '.'
+mostPopularLetter message = fst . head . reverse $
+    sortOn snd (map freqTuple (distinctLetters message))
+    where freqTuple x = (x, count x message)
+          count x = length . filter (==x)
