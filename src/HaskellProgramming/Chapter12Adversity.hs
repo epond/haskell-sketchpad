@@ -13,3 +13,6 @@ replaceThe = (intercalate " ") . (map swap) . words
     where swap msg = case (notThe msg) of
             Just x -> x
             Nothing -> "a"
+
+countTheBeforeVowel :: String -> Integer
+countTheBeforeVowel _ = 0
