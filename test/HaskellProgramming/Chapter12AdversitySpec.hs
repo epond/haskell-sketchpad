@@ -43,3 +43,8 @@ spec = do
         it "can provide a fallback value" $ do
             fromMaybe 0 (Just 5) `shouldBe` 5
             fromMaybe 3 Nothing `shouldBe` 3
+        it "can convert between List and Maybe" $ do
+            listToMaybe [1, 2, 3] `shouldBe` Just 1
+            listToMaybe ([] :: [Integer]) `shouldBe` Nothing
+            maybeToList (Just 1) `shouldBe` [1]
+            maybeToList (Nothing :: Maybe Integer) `shouldBe` []

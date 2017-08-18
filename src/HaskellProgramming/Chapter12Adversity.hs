@@ -79,3 +79,11 @@ mayybee _ f (Just x) = f x
 
 fromMaybe :: a -> Maybe a -> a
 fromMaybe x = mayybee x id
+
+listToMaybe :: [a] -> Maybe a
+listToMaybe [] = Nothing
+listToMaybe (x:_) = Just x
+
+maybeToList :: Maybe a -> [a]
+maybeToList Nothing = []
+maybeToList (Just x) = [x]
