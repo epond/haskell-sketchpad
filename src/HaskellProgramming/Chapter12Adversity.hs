@@ -97,3 +97,8 @@ flipMaybe :: [Maybe a] -> Maybe [a]
 flipMaybe = foldr (\a b -> case (a, b) of
     (Just x, Just xs) -> Just (x:xs)
     _ -> Nothing) (Just [])
+
+-- Small library for Either
+
+lefts' :: [Either a b] -> [a]
+lefts' = undefined
