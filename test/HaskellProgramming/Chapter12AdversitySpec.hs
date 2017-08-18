@@ -12,3 +12,7 @@ spec = do
             countTheBeforeVowel "the cow" `shouldBe` 0
             countTheBeforeVowel "the evil cow" `shouldBe` 1
             countTheBeforeVowel "the evil cow mooed beneath the sun in the afternoon" `shouldBe` 2
+        it "can count the number of letters in a word that are a vowel" $ do
+            countVowels "the cow" `shouldBe` 2
+            countVowels "rhythm" `shouldBe` 0
+            countVowels "anenome" `shouldBe` 4

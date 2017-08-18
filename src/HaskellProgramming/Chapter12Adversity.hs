@@ -24,3 +24,7 @@ countTheBeforeVowel = (go 0) . words
 startsWithVowel :: String -> Bool
 startsWithVowel "" = False
 startsWithVowel (x:_) = elem x ['a','e','i','o','u']
+
+countVowels :: String -> Integer
+countVowels s = toInteger . length $ filter isVowel s
+    where isVowel x = elem x ['a', 'e', 'i', 'o', 'u']
