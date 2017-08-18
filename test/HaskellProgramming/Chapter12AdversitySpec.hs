@@ -25,3 +25,8 @@ spec = do
             natToInteger Zero `shouldBe` 0
             natToInteger (Succ Zero) `shouldBe` 1
             natToInteger (Succ (Succ (Succ Zero))) `shouldBe` 3
+        it "can convert from Integer to Maybe Nat" $ do
+            integerToNat 0 `shouldBe` (Just Zero)
+            integerToNat 1 `shouldBe` (Just (Succ Zero))
+            integerToNat 2 `shouldBe` (Just (Succ (Succ Zero)))
+            integerToNat (-1) `shouldBe` Nothing
