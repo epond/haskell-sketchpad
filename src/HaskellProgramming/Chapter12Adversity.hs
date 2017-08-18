@@ -72,3 +72,7 @@ isJust (Just _) = True
 
 isNothing :: Maybe a -> Bool
 isNothing = not . isJust
+
+mayybee :: b -> (a -> b) -> Maybe a -> b
+mayybee x _ Nothing = x
+mayybee _ f (Just x) = f x

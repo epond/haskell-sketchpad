@@ -37,3 +37,6 @@ spec = do
         it "can determine is a Maybe does not have a value" $ do
             isNothing Nothing `shouldBe` True
             isNothing (Just 1) `shouldBe` False
+        it "has a catamorphism for Maybe" $ do
+            mayybee 0 (+1) Nothing `shouldBe` 0
+            mayybee 0 (+1) (Just 1) `shouldBe` 2
