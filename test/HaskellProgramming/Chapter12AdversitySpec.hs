@@ -34,3 +34,6 @@ spec = do
         it "can determine if a Maybe has a value" $ do
             isJust Nothing `shouldBe` False
             isJust (Just 1) `shouldBe` True
+        it "can determine is a Maybe does not have a value" $ do
+            isNothing Nothing `shouldBe` True
+            isNothing (Just 1) `shouldBe` False

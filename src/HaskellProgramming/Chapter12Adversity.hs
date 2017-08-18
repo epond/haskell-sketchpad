@@ -69,3 +69,6 @@ integerToNat i
 isJust :: Maybe a -> Bool
 isJust Nothing = False
 isJust (Just _) = True
+
+isNothing :: Maybe a -> Bool
+isNothing = not . isJust
