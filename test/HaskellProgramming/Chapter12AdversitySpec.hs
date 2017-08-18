@@ -30,3 +30,7 @@ spec = do
             integerToNat 1 `shouldBe` (Just (Succ Zero))
             integerToNat 2 `shouldBe` (Just (Succ (Succ Zero)))
             integerToNat (-1) `shouldBe` Nothing
+    describe "Small library for Maybe" $ do
+        it "can determine if a Maybe has a value" $ do
+            isJust Nothing `shouldBe` False
+            isJust (Just 1) `shouldBe` True

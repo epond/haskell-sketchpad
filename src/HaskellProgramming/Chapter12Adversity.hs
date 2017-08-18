@@ -63,3 +63,9 @@ integerToNat i
     | otherwise = Just (go i)
     where go 0 = Zero
           go x = Succ (go (x - 1))
+
+-- Small library for Maybe
+
+isJust :: Maybe a -> Bool
+isJust Nothing = False
+isJust (Just _) = True
