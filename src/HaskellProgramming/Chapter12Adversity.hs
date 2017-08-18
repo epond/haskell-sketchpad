@@ -15,4 +15,12 @@ replaceThe = (intercalate " ") . (map swap) . words
             Nothing -> "a"
 
 countTheBeforeVowel :: String -> Integer
-countTheBeforeVowel _ = 0
+countTheBeforeVowel = (go 0) . words
+    where go acc (x:y:xs) = case (notThe x) of
+            Nothing | (startsWithVowel y) -> go (acc + 1) xs
+            _ -> go acc (y:xs)
+          go acc _ = acc
+
+startsWithVowel :: String -> Bool
+startsWithVowel "" = False
+startsWithVowel (x:_) = elem x ['a','e','i','o','u']
