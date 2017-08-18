@@ -14,6 +14,9 @@ replaceThe = (intercalate " ") . (map swap) . words
             Just x -> x
             Nothing -> "a"
 
+vowels :: [Char]
+vowels = "aeiou"
+
 countTheBeforeVowel :: String -> Integer
 countTheBeforeVowel = (go 0) . words
     where go acc (x:y:xs) = case (notThe x) of
@@ -23,8 +26,20 @@ countTheBeforeVowel = (go 0) . words
 
 startsWithVowel :: String -> Bool
 startsWithVowel "" = False
-startsWithVowel (x:_) = elem x ['a','e','i','o','u']
+startsWithVowel (x:_) = elem x vowels
 
 countVowels :: String -> Integer
 countVowels s = toInteger . length $ filter isVowel s
-    where isVowel x = elem x ['a', 'e', 'i', 'o', 'u']
+    where isVowel x = elem x vowels
+
+newtype Word' =
+    Word' String
+    deriving (Eq, Show)
+
+countConsonants :: String -> Integer
+countConsonants w = (toInteger . length) w - countVowels w
+
+mkWord :: String -> Maybe Word'
+mkWord w
+    | countVowels w > countConsonants w = Nothing
+    | otherwise                         = Just (Word' w)

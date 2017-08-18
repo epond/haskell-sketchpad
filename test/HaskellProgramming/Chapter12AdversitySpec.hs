@@ -16,3 +16,7 @@ spec = do
             countVowels "the cow" `shouldBe` 2
             countVowels "rhythm" `shouldBe` 0
             countVowels "anenome" `shouldBe` 4
+    describe "Validate the word" $ do
+        it "can validate a word based upon number of vowels versus consonants" $ do
+            mkWord "doolalay" `shouldBe` Just (Word' "doolalay")
+            mkWord "doolaalay" `shouldBe` Nothing
