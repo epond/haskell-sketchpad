@@ -51,3 +51,6 @@ spec = do
         it "can drop Nothing values from a List" $ do
             catMaybes [Just 1, Nothing, Just 2] `shouldBe` [1, 2]
             catMaybes [(Nothing :: Maybe Integer), (Nothing :: Maybe Integer)] `shouldBe` []
+        it "can convert a List of Maybe into a Maybe of List" $ do
+            flipMaybe [Just 1, Just 2, Just 3] `shouldBe` Just [1, 2, 3]
+            flipMaybe [Just 1, Nothing, Just 3] `shouldBe` Nothing

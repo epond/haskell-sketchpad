@@ -89,6 +89,11 @@ maybeToList Nothing = []
 maybeToList (Just x) = [x]
 
 catMaybes :: [Maybe a] -> [a]
-catMaybes []     = []
-catMaybes ((Just x):rest) = x : (catMaybes rest)
-catMaybes (Nothing:rest) = catMaybes rest
+catMaybes = foldr (\m rest -> case m of
+    Just x -> x : rest
+    Nothing -> rest) []
+
+flipMaybe :: [Maybe a] -> Maybe [a]
+flipMaybe = foldr (\a b -> case (a, b) of
+    (Just x, Just xs) -> Just (x:xs)
+    _ -> Nothing) (Just [])
