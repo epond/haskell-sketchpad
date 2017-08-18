@@ -76,3 +76,6 @@ isNothing = not . isJust
 mayybee :: b -> (a -> b) -> Maybe a -> b
 mayybee x _ Nothing = x
 mayybee _ f (Just x) = f x
+
+fromMaybe :: a -> Maybe a -> a
+fromMaybe x = mayybee x id

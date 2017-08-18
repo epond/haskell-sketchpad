@@ -40,3 +40,6 @@ spec = do
         it "has a catamorphism for Maybe" $ do
             mayybee 0 (+1) Nothing `shouldBe` 0
             mayybee 0 (+1) (Just 1) `shouldBe` 2
+        it "can provide a fallback value" $ do
+            fromMaybe 0 (Just 5) `shouldBe` 5
+            fromMaybe 3 Nothing `shouldBe` 3
