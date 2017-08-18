@@ -48,3 +48,6 @@ spec = do
             listToMaybe ([] :: [Integer]) `shouldBe` Nothing
             maybeToList (Just 1) `shouldBe` [1]
             maybeToList (Nothing :: Maybe Integer) `shouldBe` []
+        it "can drop Nothing values from a List" $ do
+            catMaybes [Just 1, Nothing, Just 2] `shouldBe` [1, 2]
+            catMaybes [(Nothing :: Maybe Integer), (Nothing :: Maybe Integer)] `shouldBe` []
