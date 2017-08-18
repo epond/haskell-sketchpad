@@ -32,6 +32,8 @@ countVowels :: String -> Integer
 countVowels s = toInteger . length $ filter isVowel s
     where isVowel x = elem x vowels
 
+-- Validate the word
+
 newtype Word' =
     Word' String
     deriving (Eq, Show)
@@ -43,3 +45,14 @@ mkWord :: String -> Maybe Word'
 mkWord w
     | countVowels w > countConsonants w = Nothing
     | otherwise                         = Just (Word' w)
+
+-- It's only Natural
+
+data Nat =
+    Zero
+  | Succ Nat
+  deriving (Eq, Show)
+
+natToInteger :: Nat -> Integer
+natToInteger Zero = 0
+natToInteger (Succ n) = 1 + natToInteger n

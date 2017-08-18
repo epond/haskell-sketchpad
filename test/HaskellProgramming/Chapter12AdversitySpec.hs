@@ -20,3 +20,8 @@ spec = do
         it "can validate a word based upon number of vowels versus consonants" $ do
             mkWord "doolalay" `shouldBe` Just (Word' "doolalay")
             mkWord "doolaalay" `shouldBe` Nothing
+    describe "It's only Natural" $ do
+        it "can convert from Nat to Integer" $ do
+            natToInteger Zero `shouldBe` 0
+            natToInteger (Succ Zero) `shouldBe` 1
+            natToInteger (Succ (Succ (Succ Zero))) `shouldBe` 3
