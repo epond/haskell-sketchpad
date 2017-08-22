@@ -101,4 +101,7 @@ flipMaybe = foldr (\a b -> case (a, b) of
 -- Small library for Either
 
 lefts' :: [Either a b] -> [a]
-lefts' = undefined
+lefts' [] = []
+lefts' eithers = foldr (\a b -> case (a, b) of
+    (Left x, xs) -> (x:xs)
+    (_, xs) -> xs) [] eithers
