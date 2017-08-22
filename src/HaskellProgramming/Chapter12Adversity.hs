@@ -105,3 +105,10 @@ lefts' [] = []
 lefts' eithers = foldr (\a b -> case (a, b) of
     (Left x, xs) -> (x:xs)
     (_, xs) -> xs) [] eithers
+
+
+rights' :: [Either a b] -> [b]
+rights' [] = []
+rights' eithers = foldr (\a b -> case (a, b) of
+    (Right x, xs) -> (x:xs)
+    (_, xs) -> xs) [] eithers

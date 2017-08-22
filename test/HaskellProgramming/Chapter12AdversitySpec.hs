@@ -55,5 +55,7 @@ spec = do
             flipMaybe [Just 1, Just 2, Just 3] `shouldBe` Just [1, 2, 3]
             flipMaybe [Just 1, Nothing, Just 3] `shouldBe` Nothing
     describe "Small library for Either" $ do
-        it "can extract the left of an Either" $ do
-            lefts' [Left 1, Right 2, Left 3] `shouldBe` [1, 3]
+        it "can extract the left of an Either in a list" $ do
+            lefts' [Left 1, Right 2, Left 3, Right 4] `shouldBe` [1, 3]
+        it "can extract the right of an Either in a list" $ do
+            rights' [Left 1, Right 2, Left 3, Right 4] `shouldBe` [2, 4]
