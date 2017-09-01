@@ -126,3 +126,8 @@ either' _ f (Right x) = f x
 
 eitherMaybe'' :: (b -> c) -> Either a b -> Maybe c
 eitherMaybe'' f = either' (\_ -> Nothing) (\x -> Just (f x))
+
+-- Unfolds
+
+myIterate :: (a -> a) -> a -> [a]
+myIterate f x = x:(myIterate f (f x))

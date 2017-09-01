@@ -74,3 +74,6 @@ spec = do
             eitherMaybe'' even (Right 1) `shouldBe` (Just False)
             eitherMaybe'' even (Right 2) `shouldBe` (Just True)
             eitherMaybe'' even (Left 2) `shouldBe` Nothing
+    describe "Unfolds" $ do
+        it "can iterate" $ do
+            (take 5 $ myIterate (+1) 0) `shouldBe` [0,1,2,3,4]
