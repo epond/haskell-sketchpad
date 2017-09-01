@@ -65,3 +65,8 @@ spec = do
             eitherMaybe' even (Right 1) `shouldBe` (Just False)
             eitherMaybe' even (Right 2) `shouldBe` (Just True)
             eitherMaybe' even (Left 2) `shouldBe` Nothing
+        it "has a general catamorphism for Either values" $ do
+            either' not even (Right 1) `shouldBe` False
+            either' not even (Right 2) `shouldBe` True
+            either' not even (Left False) `shouldBe` True
+            either' not even (Left True) `shouldBe` False
