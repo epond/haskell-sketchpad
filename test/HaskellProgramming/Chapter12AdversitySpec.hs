@@ -90,3 +90,7 @@ spec = do
         it "can unfold into a binary tree with several nodes" $ do
             let f x = if x < 2 then (Just (x+1, x, x+1)) else Nothing
             (unfold f 0) `shouldBe` Node (Node Leaf 1 Leaf) 0 (Node Leaf 1 Leaf)
+        it "can use the treeBuild function to build a binary tree" $ do
+            treeBuild 0 `shouldBe` Leaf
+            treeBuild 1 `shouldBe` Node Leaf 0 Leaf
+            treeBuild 2 `shouldBe` Node (Node Leaf 1 Leaf) 0 (Node Leaf 1 Leaf)
