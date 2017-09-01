@@ -110,3 +110,8 @@ rights' :: [Either a b] -> [b]
 rights' eithers = foldr (\a b -> case (a, b) of
     (Right x, xs) -> (x:xs)
     (_, xs) -> xs) [] eithers
+
+partitionEithers' :: [Either a b] -> ([a], [b])
+partitionEithers' eithers = foldr (\a b -> case (a, b) of
+    (Left x, (lefts, rights)) -> ((x:lefts), rights)
+    (Right x, (lefts, rights)) -> (lefts, (x:rights))) ([], []) eithers

@@ -59,3 +59,5 @@ spec = do
             lefts' [Left 1, Right 2, Left 3, Right 4] `shouldBe` [1, 3]
         it "can extract the right of an Either in a list" $ do
             rights' [Left 1, Right 2, Left 3, Right 4] `shouldBe` [2, 4]
+        it "can partition eithers" $ do
+            partitionEithers' [Left 1, Right 2, Left 3, Right 4] `shouldBe` ([1, 3], [2, 4])
