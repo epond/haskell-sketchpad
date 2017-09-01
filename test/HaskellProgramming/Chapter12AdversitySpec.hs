@@ -82,3 +82,11 @@ spec = do
             (take 5 $ myUnfoldr (\b -> Just ((show b), b+1)) 0) `shouldBe` ["0","1","2","3","4"]
         it "can iterate using an implementation in terms of unfoldr" $ do
             (take 5 $ betterIterate (+1) 0) `shouldBe` [0,1,2,3,4]
+        it "can unfold into a single Leaf binary tree" $ do
+            (unfold (\_ -> Nothing) True) `shouldBe` (Leaf :: BinaryTree Bool)
+        it "can unfold into a single Node binary tree" $ do
+            let f x = if x then (Just (False, True, False)) else Nothing
+            (unfold f True) `shouldBe` Node Leaf True Leaf
+        it "can unfold into a binary tree with several nodes" $ do
+            let f x = if x < 2 then (Just (x+1, x, x+1)) else Nothing
+            (unfold f 0) `shouldBe` Node (Node Leaf 1 Leaf) 0 (Node Leaf 1 Leaf)
