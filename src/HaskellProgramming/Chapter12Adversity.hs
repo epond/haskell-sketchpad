@@ -123,3 +123,6 @@ eitherMaybe' f (Right x) = Just (f x)
 either' :: (a -> c) -> (b -> c) -> Either a b -> c
 either' f _ (Left x) = f x
 either' _ f (Right x) = f x
+
+eitherMaybe'' :: (b -> c) -> Either a b -> Maybe c
+eitherMaybe'' f = either' (\_ -> Nothing) (\x -> Just (f x))
