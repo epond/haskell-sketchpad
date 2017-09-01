@@ -61,3 +61,7 @@ spec = do
             rights' [Left 1, Right 2, Left 3, Right 4] `shouldBe` [2, 4]
         it "can partition eithers" $ do
             partitionEithers' [Left 1, Right 2, Left 3, Right 4] `shouldBe` ([1, 3], [2, 4])
+        it "can convert an Either to a Maybe" $ do
+            eitherMaybe' even (Right 1) `shouldBe` (Just False)
+            eitherMaybe' even (Right 2) `shouldBe` (Just True)
+            eitherMaybe' even (Left 2) `shouldBe` Nothing

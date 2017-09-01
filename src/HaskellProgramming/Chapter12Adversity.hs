@@ -115,3 +115,7 @@ partitionEithers' :: [Either a b] -> ([a], [b])
 partitionEithers' eithers = foldr (\a b -> case (a, b) of
     (Left x, (lefts, rights)) -> ((x:lefts), rights)
     (Right x, (lefts, rights)) -> (lefts, (x:rights))) ([], []) eithers
+
+eitherMaybe' :: (b -> c) -> Either a b -> Maybe c
+eitherMaybe' _ (Left _) = Nothing
+eitherMaybe' f (Right x) = Just (f x)
