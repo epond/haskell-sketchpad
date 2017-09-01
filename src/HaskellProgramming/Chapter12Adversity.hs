@@ -136,3 +136,6 @@ myUnfoldr :: (b -> Maybe (a, b)) -> b -> [a]
 myUnfoldr f x = case (f x) of
     Nothing -> []
     Just (a, b) -> a:(myUnfoldr f b)
+
+betterIterate :: (a -> a) -> a -> [a]
+betterIterate f = myUnfoldr (\x -> Just (x, f x))

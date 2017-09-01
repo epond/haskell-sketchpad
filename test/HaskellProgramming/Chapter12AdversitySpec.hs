@@ -80,3 +80,5 @@ spec = do
         it "has a more general anamorphism" $ do
             (take 5 $ myUnfoldr (\b -> Just (b, b+1)) 0) `shouldBe` [0,1,2,3,4]
             (take 5 $ myUnfoldr (\b -> Just ((show b), b+1)) 0) `shouldBe` ["0","1","2","3","4"]
+        it "can iterate using an implementation in terms of unfoldr" $ do
+            (take 5 $ betterIterate (+1) 0) `shouldBe` [0,1,2,3,4]
