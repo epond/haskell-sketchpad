@@ -31,6 +31,7 @@ library
                    HaskellProgramming.Chapter11Datatypes,
                    HaskellProgramming.Chapter12Adversity,
                    HaskellProgramming.Chapter14Morse,
+                   HaskellProgramming.Chapter14Testing,
                    Typeclasses
   hs-source-dirs:  src
   default-language:Haskell2010
@@ -63,6 +64,7 @@ test-suite spec
                    HaskellProgramming.Chapter11DatatypesSpec,
                    HaskellProgramming.Chapter12AdversitySpec,
                    HaskellProgramming.Chapter14MorseSpec,
+                   HaskellProgramming.Chapter14TestingSpec,
                    TypeclassesSpec
   build-depends:   base,
                    haskell-sketchpad,
