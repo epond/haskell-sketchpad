@@ -5,6 +5,7 @@ import Test.QuickCheck
 
 -- see http://hspec.github.io/quickcheck.html
 -- see https://hackage.haskell.org/package/QuickCheck-2.8.1/docs/Test-QuickCheck.html
+-- see https://begriffs.com/posts/2017-01-14-design-use-quickcheck.html
 spec :: Spec
 spec = do
   describe "read" $ do
