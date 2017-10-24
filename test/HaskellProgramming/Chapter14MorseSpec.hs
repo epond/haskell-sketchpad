@@ -23,12 +23,14 @@ charGen = elements allowedChars
 morseGen :: Gen Morse
 morseGen = elements allowedMorse
 
--- Example interaction directly in the REPL:
--- $ stack ghci haskell-sketchpad:spec
--- noise> :set prompt "Haskell> "
--- Haskell> import Test.QuickCheck
--- Haskell> quickCheck prop_thereAndBackAgain
--- +++ OK, passed 100 tests.
+{-
+    Example interaction directly in the REPL:
+    $ stack ghci haskell-sketchpad:spec
+    noise> :set prompt "Haskell> "
+    Haskell> import Test.QuickCheck
+    Haskell> quickCheck prop_thereAndBackAgain
+    +++ OK, passed 100 tests.
+-}
 prop_thereAndBackAgain :: Property
 prop_thereAndBackAgain =
     forAll charGen
