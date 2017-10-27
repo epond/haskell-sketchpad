@@ -27,6 +27,8 @@ spec = do
             property $ forAll (genTuple3 :: Gen (Int, Int, Int)) multAssociative
         it "can check that multiplication is commutative" $ do
             property $ forAll (genTuple2 :: Gen (Int, Int)) multCommutative
+        it "can check a relationship between quot and rem" $ do
+            property $ forAll (genTuple2 :: Gen (Positive Int, Positive Int)) quotRemLaw
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
@@ -78,3 +80,6 @@ multAssociative (x, y, z) = x * (y * z) == (x * y) * z
 
 multCommutative :: (Num a, Eq a) => (a, a) -> Bool
 multCommutative (x, y) = x * y == y * x
+
+quotRemLaw :: Integral a => (Positive a, Positive a) -> Bool
+quotRemLaw (Positive x, Positive y) = (quot x y) * y + (rem x y) == x
