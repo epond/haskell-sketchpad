@@ -17,8 +17,8 @@ spec = do
             property $ \x -> x + 1 > (x :: Int)
         it "can check the half function" $ do
             property prop_halfIdentity
-        it "can check that a sorted list is ordered" $ do
-            property prop_sortOrderInt
+        it "can check that a sorted list Int is ordered" $ do
+            property $ forAll (arbitrary :: Gen [Int]) (\x -> listOrdered (sort x))
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
@@ -45,7 +45,3 @@ listOrdered xs =
     where go _ status@(_, False) = status
           go y (Nothing, t) = (Just y, t)
           go y (Just x, t) = (Just y, x >= y)
-
-prop_sortOrderInt :: Property
-prop_sortOrderInt =
-    forAll (arbitrary :: Gen [Int]) (\x -> listOrdered (sort x))
