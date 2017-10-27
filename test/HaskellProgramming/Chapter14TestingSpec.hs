@@ -21,6 +21,8 @@ spec = do
             property $ forAll (arbitrary :: Gen [Int]) (\x -> listOrdered (sort x))
         it "can check that plus is associative" $ do
             property $ forAll (genTuple3 :: Gen (Int, Int, Int)) plusAssociative
+        it "can check that plus is commutative" $ do
+            property $ forAll (genTuple2 :: Gen (Int, Int)) plusCommutative
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
@@ -48,8 +50,11 @@ listOrdered xs =
           go y (Nothing, t) = (Just y, t)
           go y (Just x, t) = (Just y, x >= y)
 
-plusAssociative :: (Num a, Eq a) => (a, a, a) -> Bool
-plusAssociative (x, y, z) = x + (y + z) == (x + y) + z
+genTuple2 :: (Arbitrary a, Arbitrary b) => Gen (a, b)
+genTuple2 = do
+    a <- arbitrary
+    b <- arbitrary
+    return (a, b)
 
 genTuple3 :: (Arbitrary a, Arbitrary b, Arbitrary c) => Gen (a, b, c)
 genTuple3 = do
@@ -57,3 +62,9 @@ genTuple3 = do
     b <- arbitrary
     c <- arbitrary
     return (a, b, c)
+
+plusAssociative :: (Num a, Eq a) => (a, a, a) -> Bool
+plusAssociative (x, y, z) = x + (y + z) == (x + y) + z
+
+plusCommutative :: (Num a, Eq a) => (a, a) -> Bool
+plusCommutative (x, y) = x + y == y + x
