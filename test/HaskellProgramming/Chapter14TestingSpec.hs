@@ -19,6 +19,8 @@ spec = do
             property prop_halfIdentity
         it "can check that a sorted list Int is ordered" $ do
             property $ forAll (arbitrary :: Gen [Int]) (\x -> listOrdered (sort x))
+        it "can check that plus is associative" $ do
+            property $ forAll (genTuple3 :: Gen (Int, Int, Int)) plusAssociative
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
@@ -45,3 +47,13 @@ listOrdered xs =
     where go _ status@(_, False) = status
           go y (Nothing, t) = (Just y, t)
           go y (Just x, t) = (Just y, x >= y)
+
+plusAssociative :: (Num a, Eq a) => (a, a, a) -> Bool
+plusAssociative (x, y, z) = x + (y + z) == (x + y) + z
+
+genTuple3 :: (Arbitrary a, Arbitrary b, Arbitrary c) => Gen (a, b, c)
+genTuple3 = do
+    a <- arbitrary
+    b <- arbitrary
+    c <- arbitrary
+    return (a, b, c)
