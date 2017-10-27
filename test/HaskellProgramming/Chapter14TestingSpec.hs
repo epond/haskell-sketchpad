@@ -31,6 +31,9 @@ spec = do
             property $ forAll (genTuple2 :: Gen (Int, Positive Int)) quotRemLaw
         it "can check a relationship between div and mod" $ do
             property $ forAll (genTuple2 :: Gen (Int, Positive Int)) divModLaw
+        it "can check that reversing a list twice ends up with the original list" $ do
+            property $ forAll (arbitrary :: Gen String)
+                (\x -> (reverse . reverse) x == x)
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
