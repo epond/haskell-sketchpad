@@ -23,6 +23,10 @@ spec = do
             property $ forAll (genTuple3 :: Gen (Int, Int, Int)) plusAssociative
         it "can check that plus is commutative" $ do
             property $ forAll (genTuple2 :: Gen (Int, Int)) plusCommutative
+        it "can check that multiplication is associative" $ do
+            property $ forAll (genTuple3 :: Gen (Int, Int, Int)) multAssociative
+        it "can check that multiplication is commutative" $ do
+            property $ forAll (genTuple2 :: Gen (Int, Int)) multCommutative
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
@@ -68,3 +72,9 @@ plusAssociative (x, y, z) = x + (y + z) == (x + y) + z
 
 plusCommutative :: (Num a, Eq a) => (a, a) -> Bool
 plusCommutative (x, y) = x + y == y + x
+
+multAssociative :: (Num a, Eq a) => (a, a, a) -> Bool
+multAssociative (x, y, z) = x * (y * z) == (x * y) * z
+
+multCommutative :: (Num a, Eq a) => (a, a) -> Bool
+multCommutative (x, y) = x * y == y * x
