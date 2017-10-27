@@ -3,6 +3,7 @@ module HaskellProgramming.Chapter14TestingSpec where
 import Test.Hspec
 import Test.QuickCheck
 import HaskellProgramming.Chapter14Testing
+import Data.List (sort)
 
 spec :: Spec
 spec = do
@@ -16,6 +17,8 @@ spec = do
             property $ \x -> x + 1 > (x :: Int)
         it "can check the half function" $ do
             property prop_halfIdentity
+        it "can check that a sorted list is ordered" $ do
+            property prop_sortOrderInt
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
@@ -29,7 +32,20 @@ half x = x / 2
 prop_halfIdentity :: Double -> Bool
 prop_halfIdentity x = (((*2) . half) x) == x
 
--- another way of saying the same thing
+-- another way of saying the same thing but it shows where we could introduce a
+-- generator for the Double type if we were not happy with the default
 prop_halfIdentity' :: Property
 prop_halfIdentity' =
     forAll (arbitrary :: Gen Double) (\x -> (((*2) . half) x) == x)
+
+-- for any list you apply sort to this property should hold
+listOrdered :: (Ord a) => [a] -> Bool
+listOrdered xs =
+    snd $ foldr go (Nothing, True) xs
+    where go _ status@(_, False) = status
+          go y (Nothing, t) = (Just y, t)
+          go y (Just x, t) = (Just y, x >= y)
+
+prop_sortOrderInt :: Property
+prop_sortOrderInt =
+    forAll (arbitrary :: Gen [Int]) (\x -> listOrdered (sort x))
