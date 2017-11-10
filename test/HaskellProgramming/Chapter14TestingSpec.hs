@@ -34,6 +34,11 @@ spec = do
         it "can check that reversing a list twice ends up with the original list" $ do
             property $ forAll (arbitrary :: Gen String)
                 (\x -> (reverse . reverse) x == x)
+        -- Falsifiable (after 5 tests and 6 shrinks): 
+        -- [0]
+        -- [1]
+        -- it "can check that foldr (:) == (++)" $ do
+        --     property $ \x y -> foldr (:) (x :: [Int]) (y :: [Int]) == (++) x y
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
