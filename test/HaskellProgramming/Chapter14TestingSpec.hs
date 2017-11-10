@@ -39,6 +39,9 @@ spec = do
         -- [1]
         -- it "can check that foldr (:) == (++)" $ do
         --     property $ \x y -> foldr (:) (x :: [Int]) (y :: [Int]) == (++) x y
+        it "can check that foldr (++) [] == concat" $ do
+            property $ \x -> foldr (++) [] (x :: [[Int]]) == concat x
+
 
 dividedBy :: Integral a => a -> a -> (a, a)
 dividedBy num denom = go num denom 0
