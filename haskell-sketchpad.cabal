@@ -32,6 +32,7 @@ library
                    HaskellProgramming.Chapter12Adversity,
                    HaskellProgramming.Chapter14Morse,
                    HaskellProgramming.Chapter14Testing,
+                   HaskellProgramming.Chapter15Monoids,
                    Typeclasses
   hs-source-dirs:  src
   default-language:Haskell2010
@@ -65,6 +66,7 @@ test-suite spec
                    HaskellProgramming.Chapter12AdversitySpec,
                    HaskellProgramming.Chapter14MorseSpec,
                    HaskellProgramming.Chapter14TestingSpec,
+                   HaskellProgramming.Chapter15MonoidsSpec,
                    TypeclassesSpec
   build-depends:   base,
                    haskell-sketchpad,
