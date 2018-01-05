@@ -1,7 +1,7 @@
-module HaskellProgramming.Chapter09Spec where
+module HaskellProgramming.Chapter09ListsSpec where
 
 import Test.Hspec
-import HaskellProgramming.Chapter09
+import HaskellProgramming.Chapter09Lists
 
 spec :: Spec
 spec = do

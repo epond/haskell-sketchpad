@@ -1,4 +1,4 @@
-module HaskellProgramming.Chapter09 where
+module HaskellProgramming.Chapter09Lists where
 
 import Data.Char
 
