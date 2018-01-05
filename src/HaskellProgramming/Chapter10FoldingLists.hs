@@ -1,4 +1,4 @@
-module HaskellProgramming.Chapter10 where
+module HaskellProgramming.Chapter10FoldingLists where
 
 import Data.Time
 
