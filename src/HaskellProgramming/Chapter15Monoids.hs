@@ -45,3 +45,26 @@ monoidLeftIdentity a = (mempty <> a) == a
 
 monoidRightIdentity :: (Eq m, Monoid m) => m -> Bool
 monoidRightIdentity a = (a <> mempty) == a
+
+-- Testing QuickCheck's patience
+
+data Bull =
+    Fools
+  | Twoo
+  deriving (Eq, Show)
+
+instance Monoid Bull where
+    mempty = Fools
+    mappend _ _ = Fools
+
+-- Exercise: Maybe Another Monoid
+
+newtype First' a = First' { getFirst' :: Optional a } deriving (Eq, Show)
+
+instance Monoid (First' a) where
+    mempty = First' Nada
+
+    mappend (First' (Only x)) (First' (Only _)) = First' (Only x)
+    mappend (First' (Only x)) (First' Nada) = First' (Only x)
+    mappend (First' Nada) (First' (Only x)) = First' (Only x)
+    mappend (First' Nada) (First' Nada) = First' Nada

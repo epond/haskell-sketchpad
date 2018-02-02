@@ -35,28 +35,33 @@ spec = do
             property (monoidLeftIdentity :: String -> Bool)
         it "can check monoid right identity for String" $ do
             property (monoidRightIdentity :: String -> Bool)
-    --describe "Testing QuickCheck's patience" $ do
-        --it "can check monoid associativity for a bad Bool monoid" $ do
-        --    property (monoidAssoc :: BullMappend)
-        --it "can check monoid left identity for a bad Bool monoid" $ do
-        --    property (monoidLeftIdentity :: Bull -> Bool)
-        --it "can check monoid right identity for a bad Bool monoid" $ do
-        --    property (monoidRightIdentity :: Bull -> Bool)
+--     Commented out because they fail intentionally
+--     describe "Testing QuickCheck's patience" $ do
+--         it "can check monoid associativity for a bad Bool monoid" $ do
+--            property (monoidAssoc :: Bull -> Bull -> Bull -> Bool)
+--         it "can check monoid left identity for a bad Bool monoid" $ do
+--            property (monoidLeftIdentity :: Bull -> Bool)
+--         it "can check monoid right identity for a bad Bool monoid" $ do
+--            property (monoidRightIdentity :: Bull -> Bool)
+    describe "Exercise: Maybe Another Monoid" $ do
+        it "can check monoid associativity for First' String" $ do
+            property (monoidAssoc :: First' String -> First' String -> First' String -> Bool)
+        it "can check monoid left identity for First' String" $ do
+            property (monoidLeftIdentity :: First' String -> Bool)
+        it "can check monoid right identity for First' String" $ do
+            property (monoidRightIdentity :: First' String -> Bool)
 
 -- Testing QuickCheck's patience
-
-data Bull =
-    Fools
-  | Twoo
-  deriving (Eq, Show)
 
 instance Arbitrary Bull where
     arbitrary =
         frequency [ (1, return Fools)
                   , (1, return Twoo) ]
 
-instance Monoid Bull where
-    mempty = Fools
-    mappend _ _ = Fools
+-- Exercise: Maybe Another Monoid
 
-type BullMappend = Bull -> Bull -> Bull -> Bool
+instance Arbitrary a => Arbitrary (First' a) where
+    arbitrary = do
+        x <- arbitrary
+        frequency [ (1, return $ First' Nada)
+                  , (1, return $ First' (Only x))]
