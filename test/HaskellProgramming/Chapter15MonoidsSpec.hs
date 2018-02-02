@@ -17,3 +17,12 @@ spec = do
             Only [1] `mappend` Nada `shouldBe` Only [1]
         it "combines Nada with one Sum value to give a value" $ do
             Nada `mappend` Only (Sum 1) `shouldBe` Only (Sum 1)
+    describe "Madness: Mad Libs" $ do
+        it "can be implemented with mappend (<> is the infix operator for mappend)" $ do
+            let result = madlibbin' "Ho" "happily" "Skoda" "disinterested"
+            let expected = "Ho! he said happily as he jumped into his convertible Skoda and drove off with his disinterested wife."
+            result `shouldBe` expected
+        it "can be implemented with mconcat" $ do
+            let result = madlibbinBetter' "Ho" "happily" "Skoda" "disinterested"
+            let expected = "Ho! he said happily as he jumped into his convertible Skoda and drove off with his disinterested wife."
+            result `shouldBe` expected
