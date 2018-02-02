@@ -33,3 +33,8 @@ madlibbin' e adv noun adj =
 
 madlibbinBetter' :: Exclamation -> Adverb -> Noun -> Adjective -> String
 madlibbinBetter' e adv noun adj = mconcat [e, "! he said ", adv, " as he jumped into his convertible ", noun, " and drove off with his ", adj, " wife."]
+
+-- Better living through QuickCheck
+
+monoidAssoc :: (Eq m, Monoid m) => m -> m -> m -> Bool
+monoidAssoc a b c = (a <> (b <> c)) == ((a <> b) <> c)

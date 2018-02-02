@@ -1,6 +1,7 @@
 module HaskellProgramming.Chapter15MonoidsSpec where
 
 import Test.Hspec
+import Test.QuickCheck
 import HaskellProgramming.Chapter15Monoids
 import Data.Monoid
 
@@ -26,3 +27,6 @@ spec = do
             let result = madlibbinBetter' "Ho" "happily" "Skoda" "disinterested"
             let expected = "Ho! he said happily as he jumped into his convertible Skoda and drove off with his disinterested wife."
             result `shouldBe` expected
+    describe "Better living through QuickCheck" $ do
+        it "can check monoid associativity for String" $ do
+            property (monoidAssoc :: String -> String -> String -> Bool)
