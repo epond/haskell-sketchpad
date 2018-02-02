@@ -30,3 +30,7 @@ spec = do
     describe "Better living through QuickCheck" $ do
         it "can check monoid associativity for String" $ do
             property (monoidAssoc :: String -> String -> String -> Bool)
+        it "can check monoid left identity for String" $ do
+            property (monoidLeftIdentity :: String -> Bool)
+        it "can check monoid right identity for String" $ do
+            property (monoidRightIdentity :: String -> Bool)
