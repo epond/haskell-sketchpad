@@ -4,6 +4,7 @@ import Test.Hspec
 import Test.QuickCheck
 import HaskellProgramming.Chapter15Monoids
 import Data.Monoid
+import Control.Monad
 
 spec :: Spec
 spec = do
@@ -34,3 +35,28 @@ spec = do
             property (monoidLeftIdentity :: String -> Bool)
         it "can check monoid right identity for String" $ do
             property (monoidRightIdentity :: String -> Bool)
+    --describe "Testing QuickCheck's patience" $ do
+        --it "can check monoid associativity for a bad Bool monoid" $ do
+        --    property (monoidAssoc :: BullMappend)
+        --it "can check monoid left identity for a bad Bool monoid" $ do
+        --    property (monoidLeftIdentity :: Bull -> Bool)
+        --it "can check monoid right identity for a bad Bool monoid" $ do
+        --    property (monoidRightIdentity :: Bull -> Bool)
+
+-- Testing QuickCheck's patience
+
+data Bull =
+    Fools
+  | Twoo
+  deriving (Eq, Show)
+
+instance Arbitrary Bull where
+    arbitrary =
+        frequency [ (1, return Fools)
+                  , (1, return Twoo) ]
+
+instance Monoid Bull where
+    mempty = Fools
+    mappend _ _ = Fools
+
+type BullMappend = Bull -> Bull -> Bull -> Bool
