@@ -14,3 +14,9 @@ Build and run
 `stack build --test` will run the tests.
 
 `stack ghci` will fire up a repl with the project loaded so you can do things like check types and generally poke around.
+
+Here is how you can run an individual test suite:
+```
+$ stack ghci haskell-sketchpad:spec
+noise> hspec HaskellProgramming.Chapter15MonoidsSpec.spec
+```
