@@ -15,6 +15,7 @@ instance Monoid a => Monoid (Optional a) where
     mappend (Only x) (Only y) = Only (mappend x y)
     mappend (Only x) Nada = Only (x)
     mappend Nada (Only y) = Only (y)
+    mappend Nada Nada = Nada
 
 -- Madness
 
