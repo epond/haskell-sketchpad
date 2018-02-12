@@ -50,6 +50,11 @@ spec = do
             property (monoidLeftIdentity :: First' String -> Bool)
         it "can check monoid right identity for First' String" $ do
             property (monoidRightIdentity :: First' String -> Bool)
+        it "should demonstrate the expected behaviour" $ do
+            (First' (Only 1) `mappend` First' Nada) `shouldBe` First' (Only 1)
+            (First' Nada `mappend` First' Nada) `shouldBe` First' (Nada :: Optional Int)
+            (First' Nada `mappend` First' (Only 2)) `shouldBe` First' (Only 2)
+            (First' (Only 1) `mappend` First' (Only 2)) `shouldBe` First' (Only 1)
 
 -- Testing QuickCheck's patience
 
