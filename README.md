@@ -4,8 +4,7 @@ My experiments with the Haskell language.
 
 The intended use is to look at the source and unit tests.
 
-Build and run
------
+## Build and run
 
 `stack build` will build the module.
 
@@ -20,3 +19,7 @@ Here is how you can run an individual test suite:
 $ stack ghci haskell-sketchpad:spec
 noise> hspec HaskellProgramming.Chapter15MonoidsSpec.spec
 ```
+
+## Improvement Ideas
+
+- Extract Haskell Programming book exercises to their own project
