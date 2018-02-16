@@ -42,7 +42,8 @@ library
                    recursion-schemes,
                    data-ordlist,
                    time,
-                   containers
+                   containers,
+                   semigroups
 
 test-suite spec
   main-is:         Spec.hs
