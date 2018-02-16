@@ -18,3 +18,8 @@ data Two a b = Two a b deriving (Eq, Show)
 
 instance Semigroup (Two a b) where
     (Two x y) <> _ = Two x y
+
+data Three a b c = Three a b c deriving (Eq, Show)
+
+instance Semigroup (Three a b c) where
+    (Three x y z) <> _ = Three x y z
