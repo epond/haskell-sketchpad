@@ -28,3 +28,8 @@ data Four a b c d = Four a b c d deriving (Eq, Show)
 
 instance Semigroup (Four a b c d) where
     (Four x y z z') <> _ = Four x y z z'
+
+newtype BoolConj = BoolConj Bool deriving (Eq, Show)
+
+instance Semigroup BoolConj where
+    (BoolConj x) <> (BoolConj y) = BoolConj (x && y)

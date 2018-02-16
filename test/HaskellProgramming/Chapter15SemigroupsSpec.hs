@@ -24,6 +24,12 @@ spec = do
     describe "The Semigroup instance for Four" $ do
         it "satisfies the associativity law" $ do
             property (semigroupAssoc :: Four String String String String -> Four String String String String -> Four String String String String -> Bool)
+    describe "The Semigroup instance for BoolConj" $ do
+        it "satisfies the associativity law" $ do
+            property (semigroupAssoc :: BoolConj -> BoolConj -> BoolConj -> Bool)
+        it "behaves as intended" $ do
+            (BoolConj True) <> (BoolConj True) `shouldBe` BoolConj True
+            (BoolConj True) <> (BoolConj False) `shouldBe` BoolConj False
         
 semigroupAssoc :: (Eq m, Semigroup m) => m -> m -> m -> Bool
 semigroupAssoc a b c = (a <> (b <> c)) == ((a <> b) <> c)
@@ -55,3 +61,8 @@ instance (Arbitrary a, Arbitrary b, Arbitrary c, Arbitrary d) => Arbitrary (Four
         z <- arbitrary
         z' <- arbitrary
         return (Four x y z z')        
+    
+instance Arbitrary BoolConj where
+    arbitrary = do
+        x <- arbitrary
+        return (BoolConj x)
