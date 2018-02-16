@@ -38,3 +38,11 @@ newtype BoolDisj = BoolDisj Bool deriving (Eq, Show)
 
 instance Semigroup BoolDisj where
     (BoolDisj x) <> (BoolDisj y) = BoolDisj (x || y)    
+
+data Or a b = Fst a | Snd b deriving (Eq, Show)
+
+instance Semigroup (Or a b) where
+    Fst _ <> Fst x = Fst x
+    Fst _ <> Snd x = Snd x
+    Snd x <> Fst _ = Snd x
+    Snd x <> Snd _ = Snd x

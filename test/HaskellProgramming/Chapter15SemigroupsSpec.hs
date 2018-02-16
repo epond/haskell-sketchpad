@@ -28,14 +28,23 @@ spec = do
         it "satisfies the associativity law" $ do
             property (semigroupAssoc :: BoolConj -> BoolConj -> BoolConj -> Bool)
         it "behaves as intended" $ do
-            (BoolConj True) <> (BoolConj True) `shouldBe` BoolConj True
-            (BoolConj True) <> (BoolConj False) `shouldBe` BoolConj False
+            BoolConj True <> BoolConj True `shouldBe` BoolConj True
+            BoolConj True <> BoolConj False `shouldBe` BoolConj False
     describe "The Semigroup instance for BoolDisj" $ do
         it "satisfies the associativity law" $ do
             property (semigroupAssoc :: BoolDisj -> BoolDisj -> BoolDisj -> Bool)
         it "behaves as intended" $ do
-            (BoolDisj True) <> (BoolDisj True) `shouldBe` BoolDisj True
-            (BoolDisj True) <> (BoolDisj False) `shouldBe` BoolDisj True
+            BoolDisj True <> BoolDisj True `shouldBe` BoolDisj True
+            BoolDisj True <> BoolDisj False `shouldBe` BoolDisj True
+    describe "The Semigroup instance for Or" $ do
+        it "satisfies the associativity law" $ do
+            property (semigroupAssoc :: Or String Bool -> Or String Bool -> Or String Bool -> Bool)
+        it "behaves as intended" $ do
+            Fst 1 <> Snd 2 `shouldBe` Snd 2
+            Fst 1 <> Fst 2 `shouldBe` (Fst 2 :: Or Int Int) -- second type param of Or cannot be inferred so we need to specify it
+            Snd 1 <> Fst 2 `shouldBe` Snd 1
+            Snd 1 <> Snd 2 `shouldBe` (Snd 1 :: Or Int Int)
+        
                 
 semigroupAssoc :: (Eq m, Semigroup m) => m -> m -> m -> Bool
 semigroupAssoc a b c = (a <> (b <> c)) == ((a <> b) <> c)
@@ -77,3 +86,10 @@ instance Arbitrary BoolDisj where
     arbitrary = do
         x <- arbitrary
         return (BoolDisj x)        
+
+instance (Arbitrary a, Arbitrary b) => Arbitrary (Or a b) where
+    arbitrary = do
+        x <- arbitrary
+        y <- arbitrary
+        frequency [ (1, return $ Fst x),
+                    (1, return $ Snd y) ]
