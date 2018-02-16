@@ -13,3 +13,8 @@ newtype Identity a = Identity a deriving (Eq, Show)
 
 instance Semigroup (Identity a) where
     Identity x <> _ = Identity x
+
+data Two a b = Two a b deriving (Eq, Show)
+
+instance Semigroup (Two a b) where
+    (Two x y) <> _ = Two x y
