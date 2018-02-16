@@ -33,3 +33,8 @@ newtype BoolConj = BoolConj Bool deriving (Eq, Show)
 
 instance Semigroup BoolConj where
     (BoolConj x) <> (BoolConj y) = BoolConj (x && y)
+
+newtype BoolDisj = BoolDisj Bool deriving (Eq, Show)
+
+instance Semigroup BoolDisj where
+    (BoolDisj x) <> (BoolDisj y) = BoolDisj (x || y)    

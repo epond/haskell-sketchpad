@@ -30,7 +30,13 @@ spec = do
         it "behaves as intended" $ do
             (BoolConj True) <> (BoolConj True) `shouldBe` BoolConj True
             (BoolConj True) <> (BoolConj False) `shouldBe` BoolConj False
-        
+    describe "The Semigroup instance for BoolDisj" $ do
+        it "satisfies the associativity law" $ do
+            property (semigroupAssoc :: BoolDisj -> BoolDisj -> BoolDisj -> Bool)
+        it "behaves as intended" $ do
+            (BoolDisj True) <> (BoolDisj True) `shouldBe` BoolDisj True
+            (BoolDisj True) <> (BoolDisj False) `shouldBe` BoolDisj True
+                
 semigroupAssoc :: (Eq m, Semigroup m) => m -> m -> m -> Bool
 semigroupAssoc a b c = (a <> (b <> c)) == ((a <> b) <> c)
 
@@ -66,3 +72,8 @@ instance Arbitrary BoolConj where
     arbitrary = do
         x <- arbitrary
         return (BoolConj x)
+    
+instance Arbitrary BoolDisj where
+    arbitrary = do
+        x <- arbitrary
+        return (BoolDisj x)        
