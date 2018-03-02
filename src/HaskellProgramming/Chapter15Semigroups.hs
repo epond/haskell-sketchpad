@@ -46,3 +46,8 @@ instance Semigroup (Or a b) where
     Fst _ <> Snd x = Snd x
     Snd x <> Fst _ = Snd x
     Snd x <> Snd _ = Snd x
+
+newtype Combine a b = Combine { unCombine :: (a -> b) }
+
+instance (Semigroup b) => Semigroup (Combine a b) where
+    Combine f <> Combine g = Combine (\x -> f x <> g x)

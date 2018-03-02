@@ -44,6 +44,19 @@ spec = do
             Fst 1 <> Fst 2 `shouldBe` (Fst 2 :: Or Int Int) -- second type param of Or cannot be inferred so we need to specify it
             Snd 1 <> Fst 2 `shouldBe` Snd 1
             Snd 1 <> Snd 2 `shouldBe` (Snd 1 :: Or Int Int)
+    describe "The Semigroup instance for Combine" $ do
+        it "behaves as intended" $ do
+            let f :: (Num a) => Combine a (Sum a); f = Combine $ \n -> Sum (n + 1)
+            let g :: (Num a) => Combine a (Sum a); g = Combine $ \n -> Sum (n - 1)
+            unCombine (f <> g) 0 `shouldBe` Sum 0
+            unCombine (f <> g) 1 `shouldBe` Sum 2
+            unCombine (f <> f) 1 `shouldBe` Sum 4
+            unCombine (g <> f) 1 `shouldBe` Sum 2
+        -- This property based test won't compile because there is no instance of either Eq or Show
+        -- for the type a -> b which is a function. It's impossible to have a general definition of
+        -- Eq for eg. Int -> Int because how can it know what the function does?
+        -- it "satisfies the associativity law" $ do
+        --     property (semigroupAssoc :: Combine Int Int -> Combine Int Int -> Combine Int Int -> Bool)
         
                 
 semigroupAssoc :: (Eq m, Semigroup m) => m -> m -> m -> Bool
