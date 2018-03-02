@@ -51,3 +51,9 @@ newtype Combine a b = Combine { unCombine :: (a -> b) }
 
 instance (Semigroup b) => Semigroup (Combine a b) where
     Combine f <> Combine g = Combine (\x -> f x <> g x)
+
+newtype Comp a = Comp { unComp :: (a -> a) }
+
+-- It's unclear if this is the correct implementation
+instance Semigroup (Comp a) where
+    Comp f <> Comp g = Comp (f . g)

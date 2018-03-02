@@ -57,7 +57,16 @@ spec = do
         -- Eq for eg. Int -> Int because how can it know what the function does?
         -- it "satisfies the associativity law" $ do
         --     property (semigroupAssoc :: Combine Int Int -> Combine Int Int -> Combine Int Int -> Bool)
-        
+    -- The 'natural' implementation of Comp does not correspond with the behaviour of Combine. I don't know why.
+    -- describe "The Semigroup instance for Comp" $ do
+    --     it "behaves as intended" $ do
+    --         let f :: (Num a) => Comp a; f = Comp $ \n -> n + 1
+    --         let g :: (Num a) => Comp a; g = Comp $ \n -> n - 1
+    --         unComp (f <> g) 0 `shouldBe` 0
+    --         unComp (f <> g) 1 `shouldBe` 2
+    --         unComp (f <> f) 1 `shouldBe` 4
+    --         unComp (g <> f) 1 `shouldBe` 2
+            
                 
 semigroupAssoc :: (Eq m, Semigroup m) => m -> m -> m -> Bool
 semigroupAssoc a b c = (a <> (b <> c)) == ((a <> b) <> c)
