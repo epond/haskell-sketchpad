@@ -24,3 +24,31 @@ module HaskellProgramming.Chapter16Functors where
 -- (.) fmap :: ((x -> y) -> (g x -> g y)) -> (x -> y) -> (f (g x) -> f (g y))
 -- (.) fmap fmap :: (x -> y) -> (f (g x) -> f (g y))
 -- (.) fmap fmap :: (x -> y) -> f (g x) -> f (g y)
+
+-- Exercises: Heavy Lifting
+
+-- a = (+1) $ read "[1]" :: [Int]
+-- Expected a == [2]
+a :: [Int]
+a = fmap (+1) $ read "[1]"
+
+-- b = (++ "lol") (Just ["Hi,", "Hello"])
+-- Expected b == Just ["Hi,lol","Hellolol"]
+b :: Maybe [String]
+b = (fmap . fmap) (++ "lol") (Just ["Hi,", "Hello"])
+
+-- c = (*2) (\x -> x - 2)
+-- Expected c 1 == -2
+c :: Num a => a -> a
+c = fmap (*2) (\x -> x - 2)
+
+-- d = ((return '1' ++) . show) (\x -> [x, 1..3])
+-- Expected d 0 == "1[0,1,2,3]"
+d :: (Enum t, Num t, Show t) => t -> [Char]
+d = fmap ((return '1' ++) . show) (\x -> [x, 1..3])
+
+-- e :: IO Integer
+-- e = let ioi = readIO "1" :: IO Integer
+--         changed = read ("123"++) show ioi
+--     in (*3) changed
+-- Expected e == 3693
