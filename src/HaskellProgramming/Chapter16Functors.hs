@@ -25,6 +25,7 @@ module HaskellProgramming.Chapter16Functors where
 -- (.) fmap fmap :: (x -> y) -> (f (g x) -> f (g y))
 -- (.) fmap fmap :: (x -> y) -> f (g x) -> f (g y)
 
+
 -- Exercises: Heavy Lifting
 
 -- a = (+1) $ read "[1]" :: [Int]
@@ -52,3 +53,20 @@ d = fmap ((return '1' ++) . show) (\x -> [x, 1..3])
 --         changed = read ("123"++) show ioi
 --     in (*3) changed
 -- Expected e == 3693
+
+
+-- 16.9 QuickChecking Functor instances
+
+functorIdentity :: (Functor f, Eq (f a)) => f a -> Bool
+functorIdentity f = fmap id f == f
+
+functorCompose :: (Eq (f c), Functor f) => (a -> b) -> (b -> c) -> f a -> Bool
+functorCompose f g x = (fmap g (fmap f x)) == (fmap (g . f) x)
+
+-- ghci> let f = (\x -> functorIdentity x) :: [Int] -> Bool
+-- ghci> import Test.QuickCheck
+-- ghci> quickCheck f
+
+-- ghci> let c = functorCompose (+1) (*2)
+-- ghci> let li x = c (x :: [Int])
+-- ghci> quickCheck li
