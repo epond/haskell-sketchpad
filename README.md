@@ -17,9 +17,5 @@ The intended use is to look at the source and unit tests.
 Here is how you can run an individual test suite:
 ```
 $ stack ghci haskell-sketchpad:spec
-noise> hspec HaskellProgramming.Chapter15MonoidsSpec.spec
+noise> hspec DatatypesSpec.spec
 ```
-
-## Improvement Ideas
-
-- Extract Haskell Programming book exercises to their own project
